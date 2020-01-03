@@ -22,7 +22,11 @@ public class BrandMutation implements GraphQLMutationResolver {
         return brandService.create(name);
     }
 
-    public Long deleteBrand(Long id){
+    public Brand updateBrand(Long id, String name) {
+        return brandService.update(id, name);
+    }
+
+    public Long deleteBrand(Long id) {
         return brandService.delete(id);
     }
 }
