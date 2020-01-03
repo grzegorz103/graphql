@@ -17,4 +17,12 @@ public class BrandMutation implements GraphQLMutationResolver {
     public BrandMutation(BrandService brandService) {
         this.brandService = brandService;
     }
+
+    public Brand createBrand(String name) {
+        return brandService.create(name);
+    }
+
+    public Long deleteBrand(Long id){
+        return brandService.delete(id);
+    }
 }

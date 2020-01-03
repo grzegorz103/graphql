@@ -9,4 +9,6 @@ public interface BrandService {
     List<Brand> getAll();
 
     Brand create(String name);
+
+    Long delete(Long id);
 }
