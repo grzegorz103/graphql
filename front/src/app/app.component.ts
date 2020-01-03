@@ -1,5 +1,17 @@
-import {Component} from '@angular/core';
-import {BrandService} from "./brand.service";
+import { Component } from '@angular/core';
+import { BrandService } from "./brand.service";
+import { Subscription } from 'rxjs';
+import { Apollo } from 'apollo-angular';
+import gql from 'graphql-tag';
+
+
+const query = gql`
+{
+  brands{
+    name
+  }
+}
+`;
 
 @Component({
   selector: 'app-root',
@@ -9,9 +21,15 @@ import {BrandService} from "./brand.service";
 export class AppComponent {
   title = 'front';
   brands: any[];
+  private querySubscription: Subscription;
 
-  constructor(private brandService: BrandService) {
-    this.brandService.getAll();
-  //  this.brandService.getAll().subscribe(res => this.brands = res.data && res.data.brands);
+  constructor(private brandService: BrandService, private apollo: Apollo) {
+    this.querySubscription = this.apollo.query<any>({
+      query: query
+    })
+      .subscribe(({ data, loading }) => {
+        console.log(data);
+       this.brands = data.brands;
+      });
   }
 }
