@@ -2,24 +2,28 @@ import { Injectable } from '@angular/core';
 import { Apollo } from "apollo-angular";
 import gql from "graphql-tag";
 
-type Brand = {
-  id: string;
-  name: string;
-}
+const getAllQuery = gql`
+  {
+    brands {
+      id
+      name
+   }
+  }
 
-type Response = {
-  brands: Brand[];
-}
+`;
 
 @Injectable({
   providedIn: 'root'
 })
 export class BrandService {
 
-  constructor(
-    private apollo: Apollo
-  ) {
+  constructor(private apollo: Apollo) {
   }
 
+  getAll() {
+    return this.apollo.query<any>({
+      query: getAllQuery
+    })
+  }
 
 }

@@ -24,12 +24,6 @@ export class AppComponent {
   private querySubscription: Subscription;
 
   constructor(private brandService: BrandService, private apollo: Apollo) {
-    this.querySubscription = this.apollo.query<any>({
-      query: query
-    })
-      .subscribe(({ data, loading }) => {
-        console.log(data);
-       this.brands = data.brands;
-      });
+    this.brandService.getAll().subscribe((res=>this.brands = res.data.brands));
   }
 }
