@@ -10,5 +10,7 @@ public interface BrandService {
 
     Brand create(String name);
 
+    Brand update(Long id, String name);
+
     Long delete(Long id);
 }
