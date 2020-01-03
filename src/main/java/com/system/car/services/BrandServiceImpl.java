@@ -43,4 +43,5 @@ public class BrandServiceImpl implements BrandService {
         brandRepository.deleteById(id);
         return id;
     }
+
 }
