@@ -1,3 +1,3 @@
 # GraphQL API
 
-GraphQL API integrated with PostgreSQL database
+GraphQL API integrated with Spring and PostgreSQL database
