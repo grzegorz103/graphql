@@ -6,17 +6,19 @@
       <tr>
         <th scope="col">#</th>
         <th scope="col">Nazwa</th>
+        <th scope="col">Usuń</th>
       </tr>
       </thead>
       <tbody>
       <tr *ngFor="let brand of brands">
         <td>{{ brand.id }}</td>
         <td>{{ brand.name }}</td>
+        <td>{{brand.name }}</td>
       </tr>
       </tbody>
     </table>
   </div>
-
+<input (click)="deleteBrand(34)">
     <div class="form-horizontal mx-auto">
       <fieldset>
 

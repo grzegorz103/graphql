@@ -4,7 +4,7 @@ import gql from "graphql-tag";
 import {Brand} from "./brand";
 
 const getAllQuery = gql`
-  {
+  query brands {
     brands {
       id
       name
@@ -21,6 +21,12 @@ const createMutation = gql`
   }
 `;
 
+const deleteMutation = gql`
+   mutation deleteBrand($id: ID!) {
+    deleteBrand(id: $id)
+  }
+`;
+
 @Injectable({
   providedIn: 'root'
 })
@@ -30,9 +36,9 @@ export class BrandService {
   }
 
   getAll() {
-    return this.apollo.query<any>({
+    return this.apollo.watchQuery({
       query: getAllQuery
-    })
+    }).valueChanges;
   }
 
   create(brand: Brand){
@@ -40,8 +46,18 @@ export class BrandService {
       mutation: createMutation,
       variables: {
         name: brand.name
-      }
+      },
+      refetchQueries: ['brands']
     })
   }
 
+  delete(id:any){
+    return this.apollo.mutate({
+      mutation: deleteMutation,
+      variables:{
+        id: id
+      },
+      refetchQueries: ['brands']
+    })
+  }
 }
