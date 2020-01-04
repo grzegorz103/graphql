@@ -1,3 +1,47 @@
-<div *ngFor="let b of brands">
-  {{b.name}}
-</div>
+<app-navbar></app-navbar>
+<div class="container">
+  <div class="row">
+    <table class="table table-hover">
+      <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Nazwa</th>
+        <th scope="col">Usuń</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let brand of brands">
+        <td>{{ brand.id }}</td>
+        <td>{{ brand.name }}</td>
+        <td>{{brand.name }}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+<input (click)="deleteBrand(34)">
+    <div class="form-horizontal mx-auto">
+      <fieldset>
+
+        <!-- Form Name -->
+        <legend>Dodawanie nowej marki</legend>
+
+        <!-- Text input-->
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="textinput">Nazwa marki</label>
+          <div class="col-md-4">
+            <input id="textinput" name="textinput" type="text" placeholder=""  [(ngModel)]="brand.name" class="form-control input-md" required="">
+
+          </div>
+        </div>
+        <!-- Button -->
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="addButton"></label>
+          <div class="col-md-4">
+            <button id="addButton" name="addButton" class="btn btn-success" (click)="create()">Dodaj</button>
+          </div>
+        </div>
+
+      </fieldset>
+    </div>
+
+  </div>

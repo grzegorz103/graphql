@@ -3,6 +3,8 @@ import { BrandService } from "./brand.service";
 import { Subscription } from 'rxjs';
 import { Apollo } from 'apollo-angular';
 import gql from 'graphql-tag';
+import {Brand} from "./brand";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 
 const query = gql`
@@ -22,8 +24,26 @@ export class AppComponent {
   title = 'front';
   brands: any[];
   private querySubscription: Subscription;
+  private brand: Brand;
 
-  constructor(private brandService: BrandService, private apollo: Apollo) {
+  constructor(private brandService: BrandService, private apollo: Apollo, private matSnackBar: MatSnackBar) {
+    this.fetchBrands();
+    this.brand = new Brand();
+  }
+
+  fetchBrands(){
     this.brandService.getAll().subscribe((res=>this.brands = res.data.brands));
+  }
+
+  create(){
+    this.brandService.create(this.brand).subscribe(res=>{
+     this.matSnackBar.open('Dodano');
+    })
+  }
+
+  deleteBrand(id: any){
+    this.brandService.delete(id).subscribe(res=>{
+      this.matSnackBar.open('Usunięto');
+    })
   }
 }
