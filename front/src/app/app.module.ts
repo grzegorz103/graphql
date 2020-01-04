@@ -9,6 +9,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {NavbarComponent} from "./navbar/navbar.component";
 import {MaterialModule} from "./material/material.module";
 import {MDBBootstrapModule} from "angular-bootstrap-md";
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import {MDBBootstrapModule} from "angular-bootstrap-md";
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
     GraphQLModule,
     MaterialModule,
     MDBBootstrapModule.forRoot(),
