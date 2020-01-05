@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { BrandService } from "./brand.service";
+import { BrandService } from "./services/brand.service";
 import { Subscription } from 'rxjs';
 import { Apollo } from 'apollo-angular';
 import gql from 'graphql-tag';
-import {Brand} from "./brand";
+import {Brand} from "./models/brand";
 import {MatSnackBar} from "@angular/material/snack-bar";
 
 
