@@ -18,7 +18,7 @@ public class Brand {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @OneToMany(mappedBy = "brand", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "brand", cascade = CascadeType.ALL)
     public List<Car> cars;
 
     private String name;

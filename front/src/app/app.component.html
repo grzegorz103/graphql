@@ -1,47 +1,121 @@
 <app-navbar></app-navbar>
 <div class="container">
-  <div class="row">
-    <table class="table table-hover">
-      <thead>
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">Nazwa</th>
-        <th scope="col">Usuń</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr *ngFor="let brand of brands">
-        <td>{{ brand.id }}</td>
-        <td>{{ brand.name }}</td>
-        <td>{{brand.name }}</td>
-      </tr>
-      </tbody>
-    </table>
-  </div>
-<input (click)="deleteBrand(34)">
-    <div class="form-horizontal mx-auto">
-      <fieldset>
-
-        <!-- Form Name -->
-        <legend>Dodawanie nowej marki</legend>
-
-        <!-- Text input-->
-        <div class="form-group">
-          <label class="col-md-4 control-label" for="textinput">Nazwa marki</label>
-          <div class="col-md-4">
-            <input id="textinput" name="textinput" type="text" placeholder=""  [(ngModel)]="brand.name" class="form-control input-md" required="">
-
-          </div>
-        </div>
-        <!-- Button -->
-        <div class="form-group">
-          <label class="col-md-4 control-label" for="addButton"></label>
-          <div class="col-md-4">
-            <button id="addButton" name="addButton" class="btn btn-success" (click)="create()">Dodaj</button>
-          </div>
-        </div>
-
-      </fieldset>
+  <div *ngIf="brands">
+    <div class="row">
+      Marki
+      <table class="table table-hover">
+        <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Nazwa</th>
+          <th scope="col">Usuń</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let brand of brands">
+          <td>{{ brand.id }}</td>
+          <td>{{ brand.name }}</td>
+          <td>
+            <button class="btn btn-success" (click)="deleteBrand(brand.id)">Usuń</button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
     </div>
-
   </div>
+  <div *ngIf="!brands">
+    <mat-spinner></mat-spinner>
+  </div>
+
+  <div class="form-horizontal mx-auto">
+    <fieldset>
+
+      <!-- Form Name -->
+      <legend>Dodawanie nowej marki</legend>
+
+      <!-- Text input-->
+      <div class="form-group">
+        <label class="col-md-4 control-label" for="textinput">Nazwa marki</label>
+        <div class="col-md-4">
+          <input id="textinput" name="textinput" type="text" placeholder="" [(ngModel)]="brand.name"
+                 class="form-control input-md" required="">
+
+        </div>
+      </div>
+      <!-- Button -->
+      <div class="form-group">
+        <label class="col-md-4 control-label" for="addButton"></label>
+        <div class="col-md-4">
+          <button id="addButton" name="addButton" class="btn btn-success" (click)="createBrand()">Dodaj</button>
+        </div>
+      </div>
+
+    </fieldset>
+  </div>
+
+  <mat-divider class="mb-3"></mat-divider>
+
+  <div *ngIf="cars">
+    <div class="row">
+      <table class="table table-hover">
+        <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Model</th>
+          <th scope="col">Rok</th>
+          <th scope="col">Marka</th>
+          <th scope="col">Usuń</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let car of cars">
+          <td>{{ car.id }}</td>
+          <td>{{ car.model }}</td>
+          <td>{{ car.year }}</td>
+          <td>{{ car.brand?.name }}</td>
+          <td>
+            <button class="btn btn-success" (click)="deleteCar(car.id)">Usuń</button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div *ngIf="!cars">
+    <mat-spinner></mat-spinner>
+  </div>
+
+  <div class="form-horizontal mx-auto">
+    <fieldset>
+
+      <!-- Form Name -->
+      <legend>Dodawanie nowego samochodu</legend>
+
+      <!-- Text input-->
+      <div class="form-group">
+        <label class="col-md-4 control-label" for="textinput">Nazwa modelu</label>
+        <div class="col-md-4">
+          <input id="carInput" name="textinput" type="text" placeholder="" [(ngModel)]="car.model"
+                 class="form-control input-md" required="">
+
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-md-4 control-label" for="textinput">Rok</label>
+        <div class="col-md-4">
+          <input id="carInputYear" name="textinput" type="text" placeholder="" [(ngModel)]="car.year"
+                 class="form-control input-md" required="">
+        </div>
+      </div>
+      <!-- Button -->
+      <div class="form-group">
+        <label class="col-md-4 control-label" for="addButton"></label>
+        <div class="col-md-4">
+          <button id="carAddButton" name="addButton" class="btn btn-success" (click)="createCar()">Dodaj</button>
+        </div>
+      </div>
+
+    </fieldset>
+  </div>
+</div>

@@ -1,7 +1,7 @@
-import { Injectable } from '@angular/core';
-import { Apollo } from "apollo-angular";
+import {Injectable} from '@angular/core';
+import {Apollo} from "apollo-angular";
 import gql from "graphql-tag";
-import {Brand} from "./brand";
+import {Brand} from "../models/brand";
 
 const getAllQuery = gql`
   query brands {
@@ -41,7 +41,7 @@ export class BrandService {
     }).valueChanges;
   }
 
-  create(brand: Brand){
+  create(brand: Brand) {
     return this.apollo.mutate({
       mutation: createMutation,
       variables: {
@@ -51,10 +51,10 @@ export class BrandService {
     })
   }
 
-  delete(id:any){
+  delete(id: any) {
     return this.apollo.mutate({
       mutation: deleteMutation,
-      variables:{
+      variables: {
         id: id
       },
       refetchQueries: ['brands']
