@@ -50,6 +50,14 @@ export class AppComponent {
     })
   }
 
+  updateBrand(id: any) {
+    console.log(this.brands.find(e=>e.id===id));
+    this.brandService.update(this.brands.find(e => e.id === id))
+      .subscribe(res=>{
+        this.matSnackBar.open('Zaktualizowano');
+      });
+  }
+
   deleteBrand(id: any) {
     this.brandService.delete(id).subscribe(res => {
       this.matSnackBar.open('Usunięto');

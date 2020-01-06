@@ -2,21 +2,25 @@
 <div class="container">
   <div *ngIf="brands">
     <div class="row">
-      Marki
+      <div class="mx-auto h2">Marki</div>
       <table class="table table-hover">
         <thead>
         <tr>
           <th scope="col">#</th>
           <th scope="col">Nazwa</th>
+          <th scope="col">Edytuj</th>
           <th scope="col">Usuń</th>
         </tr>
         </thead>
         <tbody>
         <tr *ngFor="let brand of brands">
-          <td>{{ brand.id }}</td>
-          <td>{{ brand.name }}</td>
+          <td>{{brand.id}}</td>
+          <td><input type="text" class="form-control" [(ngModel)]="brand.name"></td>
           <td>
-            <button class="btn btn-success" (click)="deleteBrand(brand.id)">Usuń</button>
+            <button class="btn btn-warning text-white" (click)="updateBrand(brand.id)">Edytuj</button>
+          </td>
+          <td>
+            <button class="btn btn-danger" (click)="deleteBrand(brand.id)">Usuń</button>
           </td>
         </tr>
         </tbody>
@@ -57,6 +61,7 @@
 
   <div *ngIf="cars">
     <div class="row">
+      <div class="mx-auto h2">Samochody</div>
       <table class="table table-hover">
         <thead>
         <tr>
@@ -79,7 +84,7 @@
             </select>
           </td>
           <td>
-            <button class="btn btn-warning" (click)="updateCar(c.id)">Zapisz</button>
+            <button class="btn btn-warning text-white" (click)="updateCar(c.id)">Zapisz</button>
           </td>
           <td>
             <button class="btn btn-danger" (click)="deleteCar(c.id)">Usuń</button>
