@@ -13,9 +13,12 @@ public class CarServiceImpl implements CarService {
 
     private final CarRepository carRepository;
 
+    private final BrandService brandService;
+
     @Autowired
-    public CarServiceImpl(CarRepository carRepository) {
+    public CarServiceImpl(CarRepository carRepository, BrandService brandService) {
         this.carRepository = carRepository;
+        this.brandService = brandService;
     }
 
     @Override
@@ -34,8 +37,9 @@ public class CarServiceImpl implements CarService {
 
     @Override
     @Transactional
-    public Car update(Long id, String model, int year) {
+    public Car update(Long id, String model, int year, Long brandId) {
         Car car = carRepository.findById(id).get();
+        car.setBrand(brandService.getById(brandId));
         car.setModel(model);
         car.setYear(year);
         return carRepository.save(car);

@@ -20,8 +20,8 @@ public class CarMutation implements GraphQLMutationResolver {
         return carService.create(model, year);
     }
 
-    public Car updateCar(Long id, String model, int year) {
-        return carService.update(id, model, year);
+    public Car updateCar(Long id, String model, int year, Long brandId) {
+        return carService.update(id, model, year, brandId);
     }
 
     public Long deleteCar(Long id) {

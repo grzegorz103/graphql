@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
-import { BrandService } from "./services/brand.service";
-import { Subscription } from 'rxjs';
-import { Apollo } from 'apollo-angular';
+import {Component} from '@angular/core';
+import {BrandService} from "./services/brand.service";
+import {Subscription} from 'rxjs';
+import {Apollo} from 'apollo-angular';
 import gql from 'graphql-tag';
 import {Brand} from "./models/brand";
 import {MatSnackBar} from "@angular/material/snack-bar";
@@ -39,36 +39,44 @@ export class AppComponent {
     this.car = new Car();
   }
 
-  fetchBrands(){
+  fetchBrands() {
     // @ts-ignore
-    this.brandService.getAll().subscribe((res=>this.brands = res.data.brands));
+    this.brandService.getAll().subscribe((res => this.brands = res.data.brands));
   }
 
-  createBrand(){
-    this.brandService.create(this.brand).subscribe(res=>{
-     this.matSnackBar.open('Dodano');
+  createBrand() {
+    this.brandService.create(this.brand).subscribe(res => {
+      this.matSnackBar.open('Dodano');
     })
   }
 
-  deleteBrand(id: any){
-    this.brandService.delete(id).subscribe(res=>{
+  deleteBrand(id: any) {
+    this.brandService.delete(id).subscribe(res => {
       this.matSnackBar.open('Usunięto');
     })
   }
 
-  fetchCars(){
+  fetchCars() {
     // @ts-ignore
-    this.carService.getAll().subscribe(res=>this.cars = res.data.cars);
+    this.carService.getAll().subscribe(res => this.cars = res.data.cars);
   }
 
-  deleteCar(id: any){
-    this.carService.delete(id).subscribe(res=>{
+  updateCar(id: any) {
+    console.log(this.cars.find(e=>e.id===id));
+    this.carService.update(this.cars.find(e => e.id === id))
+      .subscribe(res=>{
+        this.matSnackBar.open('Zaktualizowano');
+      });
+  }
+
+  deleteCar(id: any) {
+    this.carService.delete(id).subscribe(res => {
       this.matSnackBar.open('Usunięto')
     })
   }
 
-  createCar(){
-    this.carService.create(this.car).subscribe(res=>{
+  createCar() {
+    this.carService.create(this.car).subscribe(res => {
       this.matSnackBar.open('Dodano samochód');
     })
   }

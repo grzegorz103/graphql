@@ -10,7 +10,7 @@ public interface CarService {
 
     Car create(String model, int year);
 
-    Car update(Long id, String model, int year);
+    Car update(Long id, String model, int year, Long brandId);
 
     Long delete(Long id);
 }

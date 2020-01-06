@@ -8,6 +8,8 @@ public interface BrandService {
 
     List<Brand> getAll();
 
+    Brand getById(Long id);
+
     Brand create(String name);
 
     Brand update(Long id, String name);

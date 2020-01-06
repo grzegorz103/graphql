@@ -24,6 +24,11 @@ public class BrandServiceImpl implements BrandService {
     }
 
     @Override
+    public Brand getById(Long id) {
+        return brandRepository.findById(id).orElse(null);
+    }
+
+    @Override
     public Brand create(String name) {
         Brand brand = new Brand();
         brand.setName(name);

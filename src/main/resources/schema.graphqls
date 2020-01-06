@@ -17,7 +17,7 @@ type Brand{
 
 type Mutation{
     createCar(model: String!, year: String!): Car
-    updateCar(id: ID!, model: String!, year: String!): Car
+    updateCar(id: ID!, model: String!, year: String!, brandId: ID!): Car
     deleteCar(id: ID!): ID
 
     createBrand(name: String!): Brand

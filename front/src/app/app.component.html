@@ -64,15 +64,23 @@
           <th scope="col">Model</th>
           <th scope="col">Rok</th>
           <th scope="col">Marka</th>
+          <th scope="col">Zapisz</th>
           <th scope="col">Usuń</th>
         </tr>
         </thead>
         <tbody>
         <tr *ngFor="let car of cars">
           <td>{{ car.id }}</td>
-          <td>{{ car.model }}</td>
-          <td>{{ car.year }}</td>
-          <td>{{ car.brand?.name }}</td>
+          <td><input type="text" class="form-control" [(ngModel)]="car.model"></td>
+          <td><input type="text" class="form-control" [(ngModel)]="car.year"></td>
+          <td>
+            <select class=" custom-select" [(ngModel)]="car.brand.id">
+              <option *ngFor="let brand of brands" [ngValue]="brand.id">{{ brand.name }}</option>
+            </select>
+          </td>
+          <td>
+            <button class="btn btn-success" (click)="updateCar(car.id)">Zapisz</button>
+          </td>
           <td>
             <button class="btn btn-success" (click)="deleteCar(car.id)">Usuń</button>
           </td>
