@@ -11,8 +11,11 @@ import java.util.List;
 @Component
 public class CarQuery implements GraphQLQueryResolver{
 
-    @Autowired
-    private CarService carService;
+    private final CarService carService;
+
+    public CarQuery(CarService carService) {
+        this.carService = carService;
+    }
 
     public List<Car> getCars(){
         return carService.getCars();

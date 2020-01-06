@@ -5,6 +5,7 @@ import { Apollo } from 'apollo-angular';
 import gql from 'graphql-tag';
 import {Brand} from "./models/brand";
 import {MatSnackBar} from "@angular/material/snack-bar";
+import {CarService} from "./services/car.service";
 
 
 const query = gql`
@@ -23,19 +24,24 @@ const query = gql`
 export class AppComponent {
   title = 'front';
   brands: any[];
-  private querySubscription: Subscription;
   private brand: Brand;
+  cars: any[];
 
-  constructor(private brandService: BrandService, private apollo: Apollo, private matSnackBar: MatSnackBar) {
+  constructor(private brandService: BrandService,
+              private apollo: Apollo,
+              private matSnackBar: MatSnackBar,
+              private carService: CarService) {
     this.fetchBrands();
+    this.fetchCars();
     this.brand = new Brand();
   }
 
   fetchBrands(){
+    // @ts-ignore
     this.brandService.getAll().subscribe((res=>this.brands = res.data.brands));
   }
 
-  create(){
+  createBrand(){
     this.brandService.create(this.brand).subscribe(res=>{
      this.matSnackBar.open('Dodano');
     })
@@ -45,5 +51,14 @@ export class AppComponent {
     this.brandService.delete(id).subscribe(res=>{
       this.matSnackBar.open('Usunięto');
     })
+  }
+
+  fetchCars(){
+    // @ts-ignore
+    this.carService.getAll().subscribe(res=>this.cars = res.data.cars);
+  }
+
+  deleteCar(id: any){
+
   }
 }
