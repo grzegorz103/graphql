@@ -27,6 +27,15 @@ const deleteMutation = gql`
   }
 `;
 
+const updateMutation = gql`
+ mutation updateBrand($id: ID!, $name: String!) {
+    updateBrand(id: $id, name: $name) {
+      id
+      name
+    }
+  }
+`;
+
 @Injectable({
   providedIn: 'root'
 })
@@ -51,6 +60,16 @@ export class BrandService {
     })
   }
 
+  update(brand:Brand){
+    return this.apollo.mutate({
+      mutation: updateMutation,
+      variables: {
+        id: brand.id,
+        name: brand.name
+      },
+      refetchQueries: ['brands']
+    })
+  }
   delete(id: any) {
     return this.apollo.mutate({
       mutation: deleteMutation,

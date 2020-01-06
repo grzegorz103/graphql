@@ -10,10 +10,14 @@ import {NavbarComponent} from "./navbar/navbar.component";
 import {MaterialModule} from "./material/material.module";
 import {MDBBootstrapModule} from "angular-bootstrap-md";
 import {FormsModule} from "@angular/forms";
+import {CarComponent} from "./car/car.component";
+import {BrandComponent} from "./brand/brand.component";
 
 @NgModule({
   declarations: [
     AppComponent,
+    CarComponent,
+    BrandComponent,
     NavbarComponent
   ],
   imports: [

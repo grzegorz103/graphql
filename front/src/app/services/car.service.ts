@@ -11,6 +11,7 @@ const getAllQuery = gql`
       model
       year
       brand {
+        id
         name
       }
    }
@@ -33,6 +34,15 @@ const createMutation = gql`
   }
 `;
 
+const updateMutation = gql`
+ mutation updateCar($id: ID!, $model: String!, $year: String!, $brandId: ID!) {
+    updateCar(id: $id, model: $model, year: $year, brandId: $brandId) {
+      id
+      model
+      year
+    }
+  }
+`;
 @Injectable({
   providedIn: 'root'
 })
@@ -52,6 +62,19 @@ export class CarService {
       variables: {
         model: car.model,
         year: car.year
+      },
+      refetchQueries: ['cars']
+    })
+  }
+
+  update(car: Car){
+    return this.apollo.mutate({
+      mutation: updateMutation,
+      variables: {
+        id: car.id,
+        model: car.model,
+        year: car.year,
+        brandId: car.brand.id
       },
       refetchQueries: ['cars']
     })
