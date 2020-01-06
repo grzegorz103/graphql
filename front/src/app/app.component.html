@@ -69,20 +69,20 @@
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let car of cars">
-          <td>{{ car.id }}</td>
-          <td><input type="text" class="form-control" [(ngModel)]="car.model"></td>
-          <td><input type="text" class="form-control" [(ngModel)]="car.year"></td>
+        <tr *ngFor="let c of cars">
+          <td>{{ c.id }}</td>
+          <td><input type="text" class="form-control" [(ngModel)]="c.model"></td>
+          <td><input type="text" class="form-control" [(ngModel)]="c.year"></td>
           <td>
-            <select class=" custom-select" [(ngModel)]="car.brand.id">
-              <option *ngFor="let brand of brands" [ngValue]="brand.id">{{ brand.name }}</option>
+            <select class="browser-default custom-select" [(ngModel)]="c.brand" [compareWith]="compareFn">
+              <option *ngFor="let brand of brands" [ngValue]="brand">{{ brand.name }}</option>
             </select>
           </td>
           <td>
-            <button class="btn btn-success" (click)="updateCar(car.id)">Zapisz</button>
+            <button class="btn btn-warning" (click)="updateCar(c.id)">Zapisz</button>
           </td>
           <td>
-            <button class="btn btn-success" (click)="deleteCar(car.id)">Usuń</button>
+            <button class="btn btn-danger" (click)="deleteCar(c.id)">Usuń</button>
           </td>
         </tr>
         </tbody>
