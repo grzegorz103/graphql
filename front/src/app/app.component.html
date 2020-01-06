@@ -86,4 +86,36 @@
     <mat-spinner></mat-spinner>
   </div>
 
+  <div class="form-horizontal mx-auto">
+    <fieldset>
+
+      <!-- Form Name -->
+      <legend>Dodawanie nowego samochodu</legend>
+
+      <!-- Text input-->
+      <div class="form-group">
+        <label class="col-md-4 control-label" for="textinput">Nazwa modelu</label>
+        <div class="col-md-4">
+          <input id="carInput" name="textinput" type="text" placeholder="" [(ngModel)]="car.model"
+                 class="form-control input-md" required="">
+
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-md-4 control-label" for="textinput">Rok</label>
+        <div class="col-md-4">
+          <input id="carInputYear" name="textinput" type="text" placeholder="" [(ngModel)]="car.year"
+                 class="form-control input-md" required="">
+        </div>
+      </div>
+      <!-- Button -->
+      <div class="form-group">
+        <label class="col-md-4 control-label" for="addButton"></label>
+        <div class="col-md-4">
+          <button id="carAddButton" name="addButton" class="btn btn-success" (click)="createCar()">Dodaj</button>
+        </div>
+      </div>
+
+    </fieldset>
+  </div>
 </div>

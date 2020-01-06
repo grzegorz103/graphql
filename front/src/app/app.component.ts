@@ -6,6 +6,7 @@ import gql from 'graphql-tag';
 import {Brand} from "./models/brand";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {CarService} from "./services/car.service";
+import {Car} from "./models/car";
 
 
 const query = gql`
@@ -26,6 +27,7 @@ export class AppComponent {
   brands: any[];
   private brand: Brand;
   cars: any[];
+  private car: Car;
 
   constructor(private brandService: BrandService,
               private apollo: Apollo,
@@ -34,6 +36,7 @@ export class AppComponent {
     this.fetchBrands();
     this.fetchCars();
     this.brand = new Brand();
+    this.car = new Car();
   }
 
   fetchBrands(){
@@ -59,6 +62,14 @@ export class AppComponent {
   }
 
   deleteCar(id: any){
+    this.carService.delete(id).subscribe(res=>{
+      this.matSnackBar.open('Usunięto')
+    })
+  }
 
+  createCar(){
+    this.carService.create(this.car).subscribe(res=>{
+      this.matSnackBar.open('Dodano samochód');
+    })
   }
 }
