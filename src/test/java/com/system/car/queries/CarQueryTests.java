@@ -1,8 +1,6 @@
 package com.system.car.queries;
 
-import com.system.car.models.Brand;
 import com.system.car.models.Car;
-import com.system.car.services.BrandService;
 import com.system.car.services.CarService;
 import org.junit.Before;
 import org.junit.Test;

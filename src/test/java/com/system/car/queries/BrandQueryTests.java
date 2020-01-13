@@ -3,7 +3,6 @@ package com.system.car.queries;
 import com.system.car.models.Brand;
 import com.system.car.services.BrandService;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
