@@ -5,21 +5,23 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
-@Table(name = "brands")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Brand {
+public abstract class Vehicle {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @OneToMany(mappedBy = "brand", cascade = CascadeType.ALL)
-    public List<Vehicle> vehicles;
+    @ManyToOne(fetch = FetchType.EAGER)
+    private Brand brand;
 
-    private String name;
+    private String model;
+
+    private Integer year;
+
 }

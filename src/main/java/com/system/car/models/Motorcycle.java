@@ -7,9 +7,10 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "cars")
+@Table(name = "motorcycles")
 @NoArgsConstructor
 @Data
-public class Car extends Vehicle {
+public class Motorcycle extends Vehicle {
+
 
 }
