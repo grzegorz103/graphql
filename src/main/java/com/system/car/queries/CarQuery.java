@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 
 @Component
-public class CarQuery implements GraphQLQueryResolver{
+    public class CarQuery implements GraphQLQueryResolver{
 
     private final CarService carService;
 

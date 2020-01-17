@@ -32,7 +32,7 @@ public class BrandServiceImpl implements BrandService {
     public Brand create(String name) {
         Brand brand = new Brand();
         brand.setName(name);
-        brand.setCars(new ArrayList<>());
+        brand.setVehicles(new ArrayList<>());
         return brandRepository.save(brand);
     }
 
