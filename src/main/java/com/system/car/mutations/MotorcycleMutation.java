@@ -15,11 +15,15 @@ public class MotorcycleMutation implements GraphQLMutationResolver {
         this.motorcycleService = motorcycleService;
     }
 
-    public Motorcycle create(String model, int year){
+    public Motorcycle createMotorcycle(String model, int year){
         return motorcycleService.create(model, year);
     }
 
-    public Motorcycle update(Long id, String model, int year){
+    public Motorcycle updateMotorcycle(Long id, String model, int year){
         return motorcycleService.update(id, model, year);
+    }
+
+    public Long deleteMotorcycle(Long id){
+        return motorcycleService.delete(id);
     }
 }

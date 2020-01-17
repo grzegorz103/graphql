@@ -56,7 +56,6 @@ public class MotorcycleServiceImplTest {
     public void deleteTest() {
         Motorcycle motorcycle = mock(Motorcycle.class);
         when(motorcycleRepository.existsById(anyLong())).thenReturn(true);
-        when(motorcycleRepository.findById(anyLong())).thenReturn(java.util.Optional.ofNullable(motorcycle));
 
         assertThat(motorcycleService.delete(motorcycle.getId())).isEqualTo(motorcycle.getId());
         verify(motorcycleRepository, times(1)).deleteById(motorcycle.getId());

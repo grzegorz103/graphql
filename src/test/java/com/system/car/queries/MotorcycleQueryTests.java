@@ -30,7 +30,7 @@ public class MotorcycleQueryTests {
         List<Motorcycle> list = Arrays.asList(mock(Motorcycle.class), mock(Motorcycle.class));
         when(motorcycleService.getAll()).thenReturn(list);
 
-        assertThat(motorcycleQuery.getAll()).isEqualTo(list);
+        assertThat(motorcycleQuery.getMotorcycles()).isEqualTo(list);
         verify(motorcycleService, times(1)).getAll();
     }
 }
