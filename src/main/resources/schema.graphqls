@@ -1,9 +1,17 @@
 type Query {
     cars: [Car]
     brands: [Brand]
+    motorcycles: [Motorcycle]
 }
 
 type Car {
+    id: ID
+    brand: Brand
+    model: String
+    year: Int
+}
+
+type Motorcycle {
     id: ID
     brand: Brand
     model: String
@@ -19,6 +27,10 @@ type Mutation{
     createCar(model: String!, year: String!): Car
     updateCar(id: ID!, model: String!, year: String!, brandId: ID!): Car
     deleteCar(id: ID!): ID
+
+    createMotorcycle(model: String!, year: String!): Motorcycle
+    updateMotorcycle(id: ID!, model: String!, year: String!): Motorcycle
+    deleteMotorcycle(id: ID!): ID
 
     createBrand(name: String!): Brand
     updateBrand(id: ID!, name: String!): Brand
