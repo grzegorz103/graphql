@@ -2,6 +2,14 @@ type Query {
     cars: [Car]
     brands: [Brand]
     motorcycles: [Motorcycle]
+    vehicles: [Vehicle]
+}
+
+type Vehicle {
+    id: ID
+    brand: Brand
+    model: String
+    year: Int
 }
 
 type Car {
