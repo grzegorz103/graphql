@@ -12,12 +12,14 @@ import {MDBBootstrapModule} from "angular-bootstrap-md";
 import {FormsModule} from "@angular/forms";
 import {CarComponent} from "./car/car.component";
 import {BrandComponent} from "./brand/brand.component";
+import {VehicleComponent} from "./vehicle/vehicle.component";
 
 @NgModule({
   declarations: [
     AppComponent,
     CarComponent,
     BrandComponent,
+    VehicleComponent,
     NavbarComponent
   ],
   imports: [
