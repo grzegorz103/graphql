@@ -18,6 +18,6 @@ public class VehicleServiceImpl implements VehicleService {
 
     @Override
     public List<Vehicle> getAll() {
-        return vehicleRepository.findAll();
+        return vehicleRepository.findAllSorted();
     }
 }
