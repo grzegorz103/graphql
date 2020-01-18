@@ -26,8 +26,8 @@ public class VehicleServiceImplTest {
 
     @Test
     public void getAllTest() {
-        when(vehicleRepository.findAll()).thenReturn(Arrays.asList(mock(Vehicle.class), mock(Vehicle.class)));
+        when(vehicleRepository.findAllSorted()).thenReturn(Arrays.asList(mock(Vehicle.class), mock(Vehicle.class)));
 
-        assertThat(vehicleService.getAll()).isEqualTo(vehicleRepository.findAll());
+        assertThat(vehicleService.getAll()).isEqualTo(vehicleRepository.findAllSorted());
     }
 }
