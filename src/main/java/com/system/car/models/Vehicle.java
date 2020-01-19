@@ -25,7 +25,7 @@ public abstract class Vehicle {
 
     private Integer year;
 
-    @ElementCollection
+    @ElementCollection(fetch = FetchType.EAGER)
     private List<String> images;
 
 }

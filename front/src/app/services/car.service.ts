@@ -14,6 +14,7 @@ const getAllQuery = gql`
         id
         name
       }
+      images
    }
   }
 `;
