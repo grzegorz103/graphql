@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -28,10 +29,11 @@ public class CarServiceImpl implements CarService {
     }
 
     @Override
-    public Car create(String model, int year) {
+    public Car create(String model, int year, List<String> images) {
         Car car = new Car();
         car.setModel(model);
         car.setYear(year);
+        car.setImages(images);
         return carRepository.save(car);
     }
 
