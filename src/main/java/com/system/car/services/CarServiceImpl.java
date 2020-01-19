@@ -35,8 +35,7 @@ public class CarServiceImpl implements CarService {
         Car car = new Car();
         car.setModel(model);
         car.setYear(year);
-        images.forEach(System.out::println);
-        car.setImages(images.stream().filter(e-> !StringUtils.isBlank(e)).collect(Collectors.toList()));
+        car.setImages(images.stream().filter(e -> !StringUtils.isBlank(e)).collect(Collectors.toList()));
         return carRepository.save(car);
     }
 
