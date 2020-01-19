@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
@@ -23,5 +24,8 @@ public abstract class Vehicle {
     private String model;
 
     private Integer year;
+
+    @ElementCollection(fetch = FetchType.EAGER)
+    private List<String> images;
 
 }

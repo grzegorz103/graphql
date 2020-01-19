@@ -1,7 +1,20 @@
-
 <div *ngIf="cars">
+
   <div class="row">
     <div class="mx-auto h2">Samochody</div>
+  </div>
+
+  <mat-grid-list cols="4" rowHeight="2:1" [gutterSize]="'20px'">
+    <mat-grid-tile *ngFor="let c of cars">
+      <div class="image" [style.backgroundImage]="'url('+c.images[0]+')'">
+        <div class="info">{{c.model}}</div>
+      </div>
+    </mat-grid-tile>
+  </mat-grid-list>
+
+  <mat-divider class="my-3"></mat-divider>
+  <div class="row">
+    <div class="mx-auto h2">Zarządzaj</div>
     <table class="table table-hover">
       <thead>
       <tr>
@@ -61,6 +74,15 @@
                class="form-control input-md" required="">
       </div>
     </div>
+
+    <div class="form-group" *ngFor="let image of car.images; let i = index;trackBy:trackByIndex;">
+      <label class="col-md-4 control-label" for="carInputYear">Zdjęcie {{ i + 1 }}</label>
+      <div class="col-md-4">
+        <input type="text" placeholder="" [(ngModel)]="car.images[i]" name="a--{{i}}"
+               class="form-control input-md" required="">
+      </div>
+    </div>
+
     <!-- Button -->
     <div class="form-group">
       <label class="col-md-4 control-label" for="carAddButton"></label>
