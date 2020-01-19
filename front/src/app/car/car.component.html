@@ -61,6 +61,15 @@
                class="form-control input-md" required="">
       </div>
     </div>
+
+    <div class="form-group" *ngFor="let image of car.images; let i = index;trackBy:trackByIndex;">
+      <label class="col-md-4 control-label" for="carInputYear">Zdjęcie {{ i + 1 }}</label>
+      <div class="col-md-4">
+        <input  type="text" placeholder="" [(ngModel)]="car.images[i]" name="a--{{i}}"
+               class="form-control input-md" required="">
+      </div>
+    </div>
+
     <!-- Button -->
     <div class="form-group">
       <label class="col-md-4 control-label" for="carAddButton"></label>

@@ -25,8 +25,8 @@ const deleteMutation = gql`
 `;
 
 const createMutation = gql`
- mutation createCar($model: String!, $year: String!) {
-    createCar(model: $model, year: $year) {
+ mutation createCar($model: String!, $year: String!, $images: [String]) {
+    createCar(model: $model, year: $year, images: $images) {
       id
       model
       year
@@ -57,11 +57,13 @@ export class CarService {
   }
 
   create(car: Car) {
+    console.log(car.images);
     return this.apollo.mutate({
       mutation: createMutation,
       variables: {
         model: car.model,
-        year: car.year
+        year: car.year,
+        images: car.images
       },
       refetchQueries: ['cars']
     })
