@@ -10,6 +10,7 @@ type Vehicle {
     brand: Brand
     model: String
     year: Int
+    images: [String]
 }
 
 type Car {
@@ -17,6 +18,7 @@ type Car {
     brand: Brand
     model: String
     year: Int
+    images: [String]
 }
 
 type Motorcycle {
@@ -24,6 +26,7 @@ type Motorcycle {
     brand: Brand
     model: String
     year: Int
+    images: [String]
 }
 
 type Brand{
@@ -32,7 +35,7 @@ type Brand{
 }
 
 type Mutation{
-    createCar(model: String!, year: String!): Car
+    createCar(model: String!, year: String!, images: [String]): Car
     updateCar(id: ID!, model: String!, year: String!, brandId: ID!): Car
     deleteCar(id: ID!): ID
 
