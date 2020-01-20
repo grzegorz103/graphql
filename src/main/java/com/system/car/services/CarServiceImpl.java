@@ -27,7 +27,12 @@ public class CarServiceImpl implements CarService {
     @Override
     @Transactional
     public List<Car> getCars() {
-        return carRepository.findAll();
+        return carRepository.findAllSorted();
+    }
+
+    @Override
+    public Car getCarById(Long id) {
+        return carRepository.findById(id).orElseThrow(() -> new RuntimeException("Not found"));
     }
 
     @Override

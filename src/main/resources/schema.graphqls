@@ -1,5 +1,6 @@
 type Query {
     cars: [Car]
+    carById(id: ID!): Car
     brands: [Brand]
     motorcycles: [Motorcycle]
     vehicles: [Vehicle]
