@@ -13,6 +13,7 @@ import {FormsModule} from "@angular/forms";
 import {CarComponent} from "./car/car.component";
 import {BrandComponent} from "./brand/brand.component";
 import {VehicleComponent} from "./vehicle/vehicle.component";
+import {CarDetailsComponent} from "./car-details/car-details.component";
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import {VehicleComponent} from "./vehicle/vehicle.component";
     CarComponent,
     BrandComponent,
     VehicleComponent,
-    NavbarComponent
+    NavbarComponent,
+    CarDetailsComponent
   ],
   imports: [
     BrowserModule,

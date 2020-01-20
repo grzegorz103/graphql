@@ -31,6 +31,11 @@ public class CarServiceImpl implements CarService {
     }
 
     @Override
+    public Car getCarById(Long id) {
+        return carRepository.findById(id).orElseThrow(() -> new RuntimeException("Not found"));
+    }
+
+    @Override
     public Car create(String model, int year, List<String> images) {
         Car car = new Car();
         car.setModel(model);

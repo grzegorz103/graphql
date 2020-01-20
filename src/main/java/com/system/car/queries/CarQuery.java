@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 
 @Component
-    public class CarQuery implements GraphQLQueryResolver{
+public class CarQuery implements GraphQLQueryResolver {
 
     private final CarService carService;
 
@@ -17,8 +17,12 @@ import java.util.List;
         this.carService = carService;
     }
 
-    public List<Car> getCars(){
+    public List<Car> getCars() {
         return carService.getCars();
+    }
+
+    public Car getCarById(Long id) {
+        return carService.getCarById(id);
     }
 
 }

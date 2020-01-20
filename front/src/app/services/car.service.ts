@@ -57,6 +57,10 @@ export class CarService {
     }).valueChanges;
   }
 
+  getById(id: any){
+
+  }
+
   create(car: Car) {
     console.log(car.images);
     return this.apollo.mutate({
