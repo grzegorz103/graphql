@@ -14,6 +14,7 @@ import {CarComponent} from "./car/car.component";
 import {BrandComponent} from "./brand/brand.component";
 import {VehicleComponent} from "./vehicle/vehicle.component";
 import {CarDetailsComponent} from "./car-details/car-details.component";
+import {LightboxModule} from "ngx-lightbox";
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import {CarDetailsComponent} from "./car-details/car-details.component";
     AppRoutingModule,
     FormsModule,
     GraphQLModule,
+    LightboxModule,
     MaterialModule,
     MDBBootstrapModule.forRoot(),
     HttpClientModule,
