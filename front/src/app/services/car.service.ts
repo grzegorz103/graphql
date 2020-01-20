@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import gql from "graphql-tag";
 import {Apollo} from "apollo-angular";
 import {Brand} from "../models/brand";
@@ -7,6 +7,21 @@ import {Car} from "../models/car";
 const getAllQuery = gql`
   query cars {
     cars {
+      id
+      model
+      year
+      brand {
+        id
+        name
+      }
+      images
+   }
+  }
+`;
+
+const getByIdQuery = gql`
+  query cars($id: ID!){
+    carById(id: $id) {
       id
       model
       year
@@ -44,12 +59,14 @@ const updateMutation = gql`
     }
   }
 `;
+
 @Injectable({
   providedIn: 'root'
 })
 export class CarService {
 
-  constructor(private apollo: Apollo) { }
+  constructor(private apollo: Apollo) {
+  }
 
   getAll() {
     return this.apollo.watchQuery({
@@ -57,8 +74,13 @@ export class CarService {
     }).valueChanges;
   }
 
-  getById(id: any){
-
+  getById(id: any) {
+    return this.apollo.watchQuery({
+      query: getByIdQuery,
+      variables: {
+        id: id
+      }
+    }).valueChanges;
   }
 
   create(car: Car) {
@@ -74,7 +96,7 @@ export class CarService {
     })
   }
 
-  update(car: Car){
+  update(car: Car) {
     return this.apollo.mutate({
       mutation: updateMutation,
       variables: {
