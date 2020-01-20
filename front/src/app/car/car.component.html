@@ -5,7 +5,7 @@
   </div>
 
   <mat-grid-list cols="4" rowHeight="2:1" [gutterSize]="'20px'">
-    <mat-grid-tile *ngFor="let c of cars">
+    <mat-grid-tile *ngFor="let c of cars" [routerLink]="['/cars', c.id, 'details']">
       <div class="image" [style.backgroundImage]="'url('+c.images[0]+')'">
         <div class="info">{{c.model}}</div>
       </div>
@@ -18,7 +18,6 @@
     <table class="table table-hover">
       <thead>
       <tr>
-        <th scope="col">#</th>
         <th scope="col">Model</th>
         <th scope="col">Rok</th>
         <th scope="col">Marka</th>
@@ -28,7 +27,6 @@
       </thead>
       <tbody>
       <tr *ngFor="let c of cars">
-        <td>{{ c.id }}</td>
         <td><input type="text" class="form-control" [(ngModel)]="c.model"></td>
         <td><input type="text" class="form-control" [(ngModel)]="c.year"></td>
         <td>

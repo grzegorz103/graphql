@@ -13,8 +13,8 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import static org.mockito.ArgumentMatchers.anyLong;
+import static org.mockito.Mockito.*;
 
 @RunWith(MockitoJUnitRunner.class)
 public class CarQueryTests {
@@ -37,6 +37,13 @@ public class CarQueryTests {
     public void getAllTest() {
         assertThat(carQuery.getCars()).isEqualTo(cars);
         assertThat(carQuery.getCars().size()).isEqualTo(cars.size());
+    }
+
+    @Test
+    public void getByIdTest(){
+        when(carService.getCarById(anyLong())).thenReturn(mock(Car.class));
+
+        assertThat(carQuery.getCarById(anyLong())).isEqualTo(carService.getCarById(anyLong()));
     }
 
 }
