@@ -1,11 +1,12 @@
-<div *ngIf="car">
-  <div class="row">
-    <div class="h2 mx-auto">{{ car.model }}</div>
-  </div>
-  <div class="row">
-  <span *ngFor="let image of images; let i=index">
+<mat-card>
+  <div *ngIf="car">
+    <div class="row">
+      <div class="h2 mx-auto">{{ car.model }}</div>
+    </div>
+    <div class="row">
+  <span *ngFor="let image of images; let i=index" class="col-md-4">
     <img [src]="image.thumb" class="image" (click)="open(i)"/>
   </span>
+    </div>
   </div>
-</div>
-
+</mat-card>
