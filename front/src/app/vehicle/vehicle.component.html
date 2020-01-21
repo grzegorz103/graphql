@@ -1,28 +1,14 @@
 <div *ngIf="vehicles">
-  <div class="row">
-    <div class="mx-auto h2">Samochody</div>
-    <table class="table table-hover">
-      <thead>
-      <tr>
-        <th scope="col">Model</th>
-        <th scope="col">Rok</th>
-        <th scope="col">Marka</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr *ngFor="let v of vehicles">
-        <td><input type="text" class="form-control" [(ngModel)]="v.model"></td>
-        <td><input type="text" class="form-control" [(ngModel)]="v.year"></td>
-        <td>
-          <select class="browser-default custom-select" [(ngModel)]="v.brand" [compareWith]="compareFn">
-            <option *ngFor="let brand of brands" [ngValue]="brand">{{ brand.name }}</option>
-          </select>
-        </td>
-      </tr>
-      </tbody>
-    </table>
+
+  <mat-grid-list cols="4" rowHeight="2:1" [gutterSize]="'20px'">
+    <mat-grid-tile *ngFor="let v of vehicles" [routerLink]="[v.subType === 'Car' ? '/cars' : '/motorcycles', v.id, 'details']">
+      <div class="image" [style.backgroundImage]="'url('+v.images[0]+')'">
+        <div class="info">{{v.model}}</div>
+      </div>
+    </mat-grid-tile>
+  </mat-grid-list>
+
   </div>
-</div>
 
 <div *ngIf="!vehicles">
   <mat-spinner></mat-spinner>

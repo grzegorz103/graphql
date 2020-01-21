@@ -8,10 +8,8 @@ const getAllQuery = gql`
       id
       model
       year
-      brand {
-        id
-        name
-      }
+      images
+      subType
    }
   }
 `;
