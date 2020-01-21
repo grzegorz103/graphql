@@ -56,7 +56,12 @@
     <!-- Form Name -->
     <legend>Dodawanie nowego samochodu</legend>
 
-    <!-- Text input-->
+    <div class="form-group" class="col-md-4">
+    <select class="browser-default custom-select" [(ngModel)]="car.brand">
+      <option *ngFor="let brand of brands" [ngValue]="brand">{{ brand.name }}</option>
+    </select>
+    </div>
+
     <div class="form-group">
       <label class="col-md-4 control-label" for="carInput">Nazwa modelu</label>
       <div class="col-md-4">

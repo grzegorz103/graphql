@@ -35,8 +35,10 @@ public class CarServiceImpl implements CarService {
     }
 
     @Override
-    public Car create(String model, int year, List<String> images, String info) {
+    @Transactional
+    public Car create(String model, int year, List<String> images, String info, Long brandId) {
         Car car = new Car();
+        car.setBrand(brandService.getById(brandId));
         car.setModel(model);
         car.setYear(year);
         car.setImages(images.stream().filter(e -> !StringUtils.isBlank(e)).collect(Collectors.toList()));
