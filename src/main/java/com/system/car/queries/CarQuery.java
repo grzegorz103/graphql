@@ -1,6 +1,7 @@
 package com.system.car.queries;
 
 import com.coxautodev.graphql.tools.GraphQLQueryResolver;
+import com.system.car.dto.CarOut;
 import com.system.car.models.Car;
 import com.system.car.services.CarService;
 import org.springframework.beans.factory.annotation.Autowired;

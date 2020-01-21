@@ -8,10 +8,10 @@ type Query {
 
 type Vehicle {
     id: ID
-    brand: Brand
     model: String
     year: Int
     images: [String]
+    subType: String
 }
 
 type Car {
