@@ -56,7 +56,12 @@
     <!-- Form Name -->
     <legend>Dodawanie nowego samochodu</legend>
 
-    <!-- Text input-->
+    <div class="form-group" class="col-md-4">
+    <select class="browser-default custom-select" [(ngModel)]="car.brand">
+      <option *ngFor="let brand of brands" [ngValue]="brand">{{ brand.name }}</option>
+    </select>
+    </div>
+
     <div class="form-group">
       <label class="col-md-4 control-label" for="carInput">Nazwa modelu</label>
       <div class="col-md-4">
@@ -78,6 +83,14 @@
       <div class="col-md-4">
         <input type="text" placeholder="" [(ngModel)]="car.images[i]" name="a--{{i}}"
                class="form-control input-md" required="">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="carInputYear">Opis</label>
+      <div class="col-md-4">
+        <textarea type="text" placeholder="" [(ngModel)]="car.info"
+                  class="form-control input-md" required=""></textarea>
       </div>
     </div>
 

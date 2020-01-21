@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -36,11 +35,14 @@ public class CarServiceImpl implements CarService {
     }
 
     @Override
-    public Car create(String model, int year, List<String> images) {
+    @Transactional
+    public Car create(String model, int year, List<String> images, String info, Long brandId) {
         Car car = new Car();
+        car.setBrand(brandService.getById(brandId));
         car.setModel(model);
         car.setYear(year);
         car.setImages(images.stream().filter(e -> !StringUtils.isBlank(e)).collect(Collectors.toList()));
+        car.setInfo(info);
         return carRepository.save(car);
     }
 

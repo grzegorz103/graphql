@@ -5,6 +5,7 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 import {CarService} from "../services/car.service";
 import {Brand} from "../models/brand";
 import {Car} from "../models/car";
+import {DomSanitizer} from "@angular/platform-browser";
 
 @Component({
   selector: 'app-car',
@@ -18,7 +19,7 @@ export class CarComponent implements OnInit {
   private car: Car;
 
   constructor(private brandService: BrandService,
-              private apollo: Apollo,
+              private apollo: Apollo,private _sanitizer: DomSanitizer,
               private matSnackBar: MatSnackBar,
               private carService: CarService) {
     this.fetchBrands();
@@ -65,5 +66,9 @@ export class CarComponent implements OnInit {
 
   trackByIndex(index: number, obj: any): any {
     return index;
+  }
+
+  getBackground(image) {
+    return this._sanitizer.bypassSecurityTrustStyle(`linear-gradient(rgba(29, 29, 29, 0), rgba(16, 16, 23, 0.5)), url(${image})`);
   }
 }

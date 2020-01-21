@@ -10,6 +10,7 @@ const getAllQuery = gql`
       id
       model
       year
+      info
       brand {
         id
         name
@@ -25,6 +26,7 @@ const getByIdQuery = gql`
       id
       model
       year
+      info
       brand {
         id
         name
@@ -41,11 +43,12 @@ const deleteMutation = gql`
 `;
 
 const createMutation = gql`
- mutation createCar($model: String!, $year: String!, $images: [String]) {
-    createCar(model: $model, year: $year, images: $images) {
+ mutation createCar($model: String!, $year: String!, $images: [String], $info: String!, $brandId: ID!) {
+    createCar(model: $model, year: $year, images: $images, info: $info, brandId: $brandId) {
       id
       model
       year
+      info
     }
   }
 `;
@@ -84,13 +87,15 @@ export class CarService {
   }
 
   create(car: Car) {
-    console.log(car.images);
+    console.log(car.brand.id);
     return this.apollo.mutate({
       mutation: createMutation,
       variables: {
         model: car.model,
         year: car.year,
-        images: car.images
+        images: car.images,
+        info: car.info,
+        brandId: car.brand.id
       },
       refetchQueries: ['cars']
     })

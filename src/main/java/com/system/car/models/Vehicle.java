@@ -28,4 +28,7 @@ public abstract class Vehicle {
     @ElementCollection(fetch = FetchType.EAGER)
     private List<String> images;
 
+    @Column(name = "info", length = 10000)
+    private String info;
+
 }
