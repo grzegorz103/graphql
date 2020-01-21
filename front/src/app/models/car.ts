@@ -6,6 +6,7 @@ export class Car {
   year: number;
   brand: Brand = new Brand();
   images: string[];
+  info: string;
 
   constructor() {
     this.images = [];
