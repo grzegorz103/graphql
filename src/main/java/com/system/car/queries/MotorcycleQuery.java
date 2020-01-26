@@ -12,7 +12,11 @@ import java.util.List;
 @Component
 public class MotorcycleQuery implements GraphQLQueryResolver {
 
-    private MotorcycleService motorcycleService;
+    private final MotorcycleService motorcycleService;
+
+    public MotorcycleQuery(MotorcycleService motorcycleService) {
+        this.motorcycleService = motorcycleService;
+    }
 
     public List<Motorcycle> getMotorcycles() {
         return motorcycleService.getAll();
