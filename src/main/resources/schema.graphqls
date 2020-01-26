@@ -42,7 +42,7 @@ type Mutation{
     updateCar(id: ID!, model: String!, year: String!, brandId: ID!): Car
     deleteCar(id: ID!): ID
 
-    createMotorcycle(model: String!, year: String!): Motorcycle
+    createMotorcycle(model: String!, year: String!, images: [String], info: String!, brandId: ID!): Motorcycle
     updateMotorcycle(id: ID!, model: String!, year: String!): Motorcycle
     deleteMotorcycle(id: ID!): ID
 

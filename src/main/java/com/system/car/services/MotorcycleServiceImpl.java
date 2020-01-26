@@ -2,18 +2,23 @@ package com.system.car.services;
 
 import com.system.car.dao.MotorcycleRepository;
 import com.system.car.models.Motorcycle;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class MotorcycleServiceImpl implements MotorcycleService {
 
     private final MotorcycleRepository motorcycleRepository;
 
-    public MotorcycleServiceImpl(MotorcycleRepository motorcycleRepository) {
+    private final BrandService brandService;
+
+    public MotorcycleServiceImpl(MotorcycleRepository motorcycleRepository,
+                                 BrandService brandService) {
         this.motorcycleRepository = motorcycleRepository;
+        this.brandService = brandService;
     }
 
 
@@ -23,10 +28,13 @@ public class MotorcycleServiceImpl implements MotorcycleService {
     }
 
     @Override
-    public Motorcycle create(String model, int year) {
+    public Motorcycle create(String model, int year, List<String> images, String info, Long brandId) {
         Motorcycle motorcycle = new Motorcycle();
         motorcycle.setModel(model);
         motorcycle.setYear(year);
+        motorcycle.setInfo(info);
+        motorcycle.setImages(images.stream().filter(e-> !StringUtils.isBlank(e)).collect(Collectors.toList()));
+        motorcycle.setBrand(brandService.getById(brandId));
         return motorcycleRepository.save(motorcycle);
     }
 
