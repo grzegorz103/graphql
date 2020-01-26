@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {Apollo} from "apollo-angular";
 import gql from "graphql-tag";
+import {Motorcycle} from "../models/motorcycle";
 
 const getAllQuery = gql`
   query motorcycles {
@@ -32,4 +33,8 @@ export class MotorcycleService {
     }).valueChanges;
   }
 
+
+  create(motorcycle: Motorcycle) {
+
+  }
 }
