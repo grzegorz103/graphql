@@ -1,6 +1,7 @@
 package com.system.car.services;
 
 import com.system.car.dao.MotorcycleRepository;
+import com.system.car.models.Brand;
 import com.system.car.models.Motorcycle;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -12,7 +13,6 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -23,6 +23,9 @@ public class MotorcycleServiceImplTest {
 
     @InjectMocks
     private MotorcycleServiceImpl motorcycleService;
+
+    @Mock
+    private BrandService brandService;
 
     @Test
     public void getAllTest() {
@@ -37,8 +40,9 @@ public class MotorcycleServiceImplTest {
     public void createTest() {
         Motorcycle mocked = mock(Motorcycle.class);
         when(motorcycleRepository.save(any(Motorcycle.class))).thenReturn(mocked);
+        when(brandService.getById(anyLong())).thenReturn(mock(Brand.class));
 
-        assertThat(motorcycleService.create(mocked.getModel(), mocked.getYear())).isEqualTo(mocked);
+        assertThat(motorcycleService.create(mocked.getModel(), mocked.getYear(), mocked.getImages(), mocked.getInfo(), 1L)).isEqualTo(mocked);
         verify(motorcycleRepository, times(1)).save(any(Motorcycle.class));
     }
 

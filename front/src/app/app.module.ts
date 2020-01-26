@@ -15,6 +15,7 @@ import {BrandComponent} from "./brand/brand.component";
 import {VehicleComponent} from "./vehicle/vehicle.component";
 import {CarDetailsComponent} from "./car-details/car-details.component";
 import {LightboxModule} from "ngx-lightbox";
+import {MotorcycleComponent} from "./motorcycle/motorcycle.component";
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import {LightboxModule} from "ngx-lightbox";
     BrandComponent,
     VehicleComponent,
     NavbarComponent,
-    CarDetailsComponent
+    CarDetailsComponent,
+    MotorcycleComponent
   ],
   imports: [
     BrowserModule,

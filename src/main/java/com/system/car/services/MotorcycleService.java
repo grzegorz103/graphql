@@ -8,7 +8,7 @@ public interface MotorcycleService {
 
     List<Motorcycle> getAll();
 
-    Motorcycle create(String model, int year);
+    Motorcycle create(String model, int year, List<String> images, String info, Long brandId);
 
     Motorcycle update(Long id, String model, int year);
 

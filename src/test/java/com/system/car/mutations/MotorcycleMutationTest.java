@@ -9,7 +9,6 @@ import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.*;
 
@@ -25,8 +24,8 @@ public class MotorcycleMutationTest {
     @Test
     public void createTest() {
         Motorcycle mocked = mock(Motorcycle.class);
-        when(motorcycleService.create(anyString(), anyInt())).thenReturn(mocked);
-        assertThat(motorcycleMutation.createMotorcycle(anyString(), anyInt())).isNotNull();
+        when(motorcycleService.create(anyString(), anyInt(), anyList(), anyString(), anyLong())).thenReturn(mocked);
+        assertThat(motorcycleMutation.createMotorcycle(anyString(), anyInt(), anyList(), anyString(), anyLong())).isNotNull();
     }
 
     @Test

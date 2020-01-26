@@ -6,6 +6,8 @@ import com.system.car.services.MotorcycleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Component
 public class MotorcycleMutation implements GraphQLMutationResolver {
 
@@ -15,15 +17,15 @@ public class MotorcycleMutation implements GraphQLMutationResolver {
         this.motorcycleService = motorcycleService;
     }
 
-    public Motorcycle createMotorcycle(String model, int year){
-        return motorcycleService.create(model, year);
+    public Motorcycle createMotorcycle(String model, int year, List<String> images, String info, Long brandId) {
+        return motorcycleService.create(model, year, images, info, brandId);
     }
 
-    public Motorcycle updateMotorcycle(Long id, String model, int year){
+    public Motorcycle updateMotorcycle(Long id, String model, int year) {
         return motorcycleService.update(id, model, year);
     }
 
-    public Long deleteMotorcycle(Long id){
+    public Long deleteMotorcycle(Long id) {
         return motorcycleService.delete(id);
     }
 }

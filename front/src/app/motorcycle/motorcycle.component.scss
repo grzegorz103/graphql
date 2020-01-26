@@ -1,7 +1,7 @@
 mat-grid-tile:hover {
-  -webkit-box-shadow: 0px 0px 46px 0px rgba(0, 128, 255, 0.55);
-  -moz-box-shadow: 0px 0px 46px 0px rgba(0, 128, 255, 0.55);
-  box-shadow: 0px 0px 46px 0px rgba(0, 128, 255, 0.55);
+  -webkit-box-shadow: 0px 0px 46px 0px rgba(0, 255, 6, 0.92);
+  -moz-box-shadow: 0px 0px 46px 0px rgba(0, 255, 6, 0.92);
+  box-shadow: 0px 0px 46px 0px rgba(0, 255, 6, 0.92);
   display: inline-block;
 }
 
@@ -28,7 +28,6 @@ mat-grid-tile {
   color: white;
   text-shadow: 0 0 6px black, 0 0 6px black;
 }
-
 
 .image {
   background-size: 100% 100%;
