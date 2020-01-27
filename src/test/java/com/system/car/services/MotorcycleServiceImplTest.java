@@ -52,8 +52,9 @@ public class MotorcycleServiceImplTest {
         when(motorcycleRepository.save(any(Motorcycle.class))).thenReturn(mocked);
         when(motorcycleRepository.findById(anyLong())).thenReturn(java.util.Optional.ofNullable(mocked));
 
-        assertThat(motorcycleService.update(mocked.getId(), mocked.getModel(), mocked.getYear())).isEqualTo(mocked);
+        assertThat(motorcycleService.update(mocked.getId(), mocked.getModel(), mocked.getYear(), anyLong())).isEqualTo(mocked);
         verify(motorcycleRepository, times(1)).save(any(Motorcycle.class));
+        verify(brandService, times(1)).getById(anyLong());
     }
 
     @Test

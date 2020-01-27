@@ -1,37 +1,35 @@
 <mat-tab-group dynamicHeight>
   <mat-tab label="Samochody">
     <div class="example-small-box mat-elevation-z4">
+      <table class="table table-hover">
+        <thead>
+        <tr>
+          <th scope="col">Model</th>
+          <th scope="col">Rok</th>
+          <th scope="col">Marka</th>
+          <th scope="col">Zapisz</th>
+          <th scope="col">Usuń</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let c of cars">
+          <td><input type="text" class="form-control" [(ngModel)]="c.model"></td>
+          <td><input type="text" class="form-control" [(ngModel)]="c.year"></td>
+          <td>
+            <select class="browser-default custom-select" [(ngModel)]="c.brand" [compareWith]="compareFn">
+              <option *ngFor="let brand of brands" [ngValue]="brand">{{ brand.name }}</option>
+            </select>
+          </td>
+          <td>
+            <button class="btn btn-warning text-white" (click)="updateCar(c.id)">Zapisz</button>
+          </td>
+          <td>
+            <button class="btn btn-danger" (click)="deleteCar(c.id)">Usuń</button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
       <div class="form-horizontal mx-auto">
-        <div class="row">
-          <table class="table table-hover">
-            <thead>
-            <tr>
-              <th scope="col">Model</th>
-              <th scope="col">Rok</th>
-              <th scope="col">Marka</th>
-              <th scope="col">Zapisz</th>
-              <th scope="col">Usuń</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr *ngFor="let c of cars">
-              <td><input type="text" class="form-control" [(ngModel)]="c.model"></td>
-              <td><input type="text" class="form-control" [(ngModel)]="c.year"></td>
-              <td>
-                <select class="browser-default custom-select" [(ngModel)]="c.brand" [compareWith]="compareFn">
-                  <option *ngFor="let brand of brands" [ngValue]="brand">{{ brand.name }}</option>
-                </select>
-              </td>
-              <td>
-                <button class="btn btn-warning text-white" (click)="updateCar(c.id)">Zapisz</button>
-              </td>
-              <td>
-                <button class="btn btn-danger" (click)="deleteCar(c.id)">Usuń</button>
-              </td>
-            </tr>
-            </tbody>
-          </table>
-        </div>
         <!-- Form Name -->
         <legend>Dodawanie nowego samochodu</legend>
 
@@ -86,6 +84,34 @@
   </mat-tab>
   <mat-tab label="Motocykle">
     <div class="example-large-box mat-elevation-z4">
+      <table class="table table-hover">
+        <thead>
+        <tr>
+          <th scope="col">Model</th>
+          <th scope="col">Rok</th>
+          <th scope="col">Marka</th>
+          <th scope="col">Zapisz</th>
+          <th scope="col">Usuń</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let m of motorcycles">
+          <td><input type="text" class="form-control" [(ngModel)]="m.model"></td>
+          <td><input type="text" class="form-control" [(ngModel)]="m.year"></td>
+          <td>
+            <select class="browser-default custom-select" [(ngModel)]="m.brand" [compareWith]="compareFn">
+              <option *ngFor="let brand of brands" [ngValue]="brand">{{ brand.name }}</option>
+            </select>
+          </td>
+          <td>
+            <button class="btn btn-warning text-white" (click)="updateMotorcycles(m.id)">Zapisz</button>
+          </td>
+          <td>
+            <button class="btn btn-danger" (click)="deleteMotorcycles(m.id)">Usuń</button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
       <fieldset>
         <legend>Dodawanie nowego motocykla</legend>
 

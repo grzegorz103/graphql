@@ -17,6 +17,7 @@ export class ManageComponent implements OnInit {
   motorcycle: Motorcycle = new Motorcycle();
   car: Car = new Car();
   brands: any[];
+  motorcycles: any[];
   cars: any[];
 
   constructor(private motorcycleService: MotorcycleService,
@@ -27,6 +28,7 @@ export class ManageComponent implements OnInit {
 
   ngOnInit() {
     this.fetchCars();
+    this.fetchMotorcycles();
     this.fetchBrands();
   }
 
@@ -73,5 +75,23 @@ export class ManageComponent implements OnInit {
 
   compareFn(c1: Brand, c2: Brand): boolean {
     return c1 && c2 ? c1.id === c2.id : c1 === c2;
+  }
+
+  fetchMotorcycles() {
+    // @ts-ignore
+    this.motorcycleService.getAll().subscribe(res => this.motorcycles = res.data.motorcycles);
+  }
+
+  updateMotorcycles(id: any) {
+  this.motorcycleService.update(this.motorcycles.find(e=>e.id === id))
+    .subscribe(res=>{
+      this.matSnackBar.open('Zaktualizowano');
+    });
+  }
+
+  deleteMotorcycles(id: any) {
+    this.motorcycleService.delete(id).subscribe(res => {
+      this.matSnackBar.open('Usunięto')
+    })
   }
 }

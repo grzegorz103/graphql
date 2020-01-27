@@ -31,10 +31,10 @@ public class MotorcycleMutationTest {
     @Test
     public void updateTest() {
         Motorcycle mocked = mock(Motorcycle.class);
-        when(motorcycleService.update(anyLong(), anyString(), anyInt())).thenReturn(mocked);
+        when(motorcycleService.update(anyLong(), anyString(), anyInt(), anyLong())).thenReturn(mocked);
 
-        assertThat(motorcycleMutation.updateMotorcycle(anyLong(), anyString(), anyInt())).isEqualTo(mocked);
-        verify(motorcycleService, times(1)).update(anyLong(), anyString(), anyInt());
+        assertThat(motorcycleMutation.updateMotorcycle(anyLong(), anyString(), anyInt(), anyLong())).isEqualTo(mocked);
+        verify(motorcycleService, times(1)).update(anyLong(), anyString(), anyInt(), anyLong());
     }
 
     @Test
