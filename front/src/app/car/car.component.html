@@ -13,43 +13,9 @@
   </mat-grid-list>
 
   <mat-divider class="my-3"></mat-divider>
-  <div class="row">
-    <div class="mx-auto h2">Zarządzaj</div>
-    <table class="table table-hover">
-      <thead>
-      <tr>
-        <th scope="col">Model</th>
-        <th scope="col">Rok</th>
-        <th scope="col">Marka</th>
-        <th scope="col">Zapisz</th>
-        <th scope="col">Usuń</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr *ngFor="let c of cars">
-        <td><input type="text" class="form-control" [(ngModel)]="c.model"></td>
-        <td><input type="text" class="form-control" [(ngModel)]="c.year"></td>
-        <td>
-          <select class="browser-default custom-select" [(ngModel)]="c.brand" [compareWith]="compareFn">
-            <option *ngFor="let brand of brands" [ngValue]="brand">{{ brand.name }}</option>
-          </select>
-        </td>
-        <td>
-          <button class="btn btn-warning text-white" (click)="updateCar(c.id)">Zapisz</button>
-        </td>
-        <td>
-          <button class="btn btn-danger" (click)="deleteCar(c.id)">Usuń</button>
-        </td>
-      </tr>
-      </tbody>
-    </table>
-  </div>
+
 </div>
 
 <div *ngIf="!cars">
   <mat-spinner></mat-spinner>
-</div>
-
-<div class="form-horizontal mx-auto">
-
 </div>
