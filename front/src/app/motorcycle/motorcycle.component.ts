@@ -35,9 +35,4 @@ export class MotorcycleComponent implements OnInit {
     this.brandService.getAll().subscribe((res => this.brands = res.data.brands));
   }
 
-  trackByIndex(index: number, obj: any): any {
-    return index;
-  }
-
-
 }

@@ -30,6 +30,22 @@ const createMutation = gql`
   }
 `;
 
+const deleteMutation = gql`
+   mutation deleteMotorcycle($id: ID!) {
+    deleteMotorcycle(id: $id)
+  }
+`;
+
+const updateMutation = gql`
+ mutation updateMotorcycle($id: ID!, $model: String!, $year: String!, $brandId: ID!) {
+    updateMotorcycle(id: $id, model: $model, year: $year, brandId: $brandId) {
+      id
+      model
+      year
+    }
+  }
+`;
+
 @Injectable({
   providedIn: 'root'
 })
@@ -53,6 +69,29 @@ export class MotorcycleService {
         year: motorcycle.year,
         images: motorcycle.images,
         info: motorcycle.info,
+        brandId: motorcycle.brand.id
+      },
+      refetchQueries: ['motorcycles']
+    })
+  }
+
+  delete(id: any) {
+    return this.apollo.mutate({
+      mutation: deleteMutation,
+      variables: {
+        id: id
+      },
+      refetchQueries: ['motorcycles']
+    })
+  }
+
+  update(motorcycle: Motorcycle) {
+    return this.apollo.mutate({
+      mutation: updateMutation,
+      variables: {
+        id: motorcycle.id,
+        model: motorcycle.model,
+        year: motorcycle.year,
         brandId: motorcycle.brand.id
       },
       refetchQueries: ['motorcycles']

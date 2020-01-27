@@ -10,7 +10,7 @@ public interface MotorcycleService {
 
     Motorcycle create(String model, int year, List<String> images, String info, Long brandId);
 
-    Motorcycle update(Long id, String model, int year);
+    Motorcycle update(Long id, String model, int year, Long brandId);
 
     Long delete(Long id);
 }

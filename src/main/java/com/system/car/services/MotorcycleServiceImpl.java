@@ -39,10 +39,11 @@ public class MotorcycleServiceImpl implements MotorcycleService {
     }
 
     @Override
-    public Motorcycle update(Long id, String model, int year) {
+    public Motorcycle update(Long id, String model, int year, Long brandId) {
         Motorcycle motorcycle = motorcycleRepository.findById(id).orElseThrow(() -> new RuntimeException("Not found"));
         motorcycle.setYear(year);
         motorcycle.setModel(model);
+        motorcycle.setBrand(brandService.getById(brandId));
 
         return motorcycleRepository.save(motorcycle);
     }
