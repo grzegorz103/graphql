@@ -21,8 +21,8 @@ public class MotorcycleMutation implements GraphQLMutationResolver {
         return motorcycleService.create(model, year, images, info, brandId);
     }
 
-    public Motorcycle updateMotorcycle(Long id, String model, int year) {
-        return motorcycleService.update(id, model, year);
+    public Motorcycle updateMotorcycle(Long id, String model, int year, Long brandId) {
+        return motorcycleService.update(id, model, year, brandId);
     }
 
     public Long deleteMotorcycle(Long id) {
