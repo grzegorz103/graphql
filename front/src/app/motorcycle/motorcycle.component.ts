@@ -13,7 +13,6 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 export class MotorcycleComponent implements OnInit {
 
   motorcycles: any;
-  motorcycle: Motorcycle = new Motorcycle();
   brands: Brand[];
 
   constructor(private motorcycleService: MotorcycleService,
@@ -40,9 +39,5 @@ export class MotorcycleComponent implements OnInit {
     return index;
   }
 
-  createMotorcycle() {
-    this.motorcycleService.create(this.motorcycle).subscribe(res => {
-      this.matSnackBar.open('Dodano motocykl');
-    })
-  }
+
 }
