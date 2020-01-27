@@ -16,7 +16,6 @@ export class CarComponent implements OnInit {
 
   brands: any[];
   cars: any[];
-  private car: Car;
 
   constructor(private brandService: BrandService,
               private apollo: Apollo,private _sanitizer: DomSanitizer,
@@ -24,7 +23,6 @@ export class CarComponent implements OnInit {
               private carService: CarService) {
     this.fetchBrands();
     this.fetchCars();
-    this.car = new Car();
   }
 
   ngOnInit() {
@@ -54,18 +52,8 @@ export class CarComponent implements OnInit {
     })
   }
 
-  createCar() {
-    this.carService.create(this.car).subscribe(res => {
-      this.matSnackBar.open('Dodano samochód');
-    })
-  }
-
   compareFn(c1: Brand, c2: Brand): boolean {
     return c1 && c2 ? c1.id === c2.id : c1 === c2;
-  }
-
-  trackByIndex(index: number, obj: any): any {
-    return index;
   }
 
   getBackground(image) {

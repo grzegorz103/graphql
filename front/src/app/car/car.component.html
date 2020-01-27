@@ -51,56 +51,5 @@
 </div>
 
 <div class="form-horizontal mx-auto">
-  <fieldset>
 
-    <!-- Form Name -->
-    <legend>Dodawanie nowego samochodu</legend>
-
-    <div class="form-group" class="col-md-4">
-    <select class="browser-default custom-select" [(ngModel)]="car.brand">
-      <option *ngFor="let brand of brands" [ngValue]="brand">{{ brand.name }}</option>
-    </select>
-    </div>
-
-    <div class="form-group">
-      <label class="col-md-4 control-label" for="carInput">Nazwa modelu</label>
-      <div class="col-md-4">
-        <input id="carInput" name="textinput" type="text" placeholder="" [(ngModel)]="car.model"
-               class="form-control input-md" required="">
-
-      </div>
-    </div>
-    <div class="form-group">
-      <label class="col-md-4 control-label" for="carInputYear">Rok</label>
-      <div class="col-md-4">
-        <input id="carInputYear" name="textinput" type="text" placeholder="" [(ngModel)]="car.year"
-               class="form-control input-md" required="">
-      </div>
-    </div>
-
-    <div class="form-group" *ngFor="let image of car.images; let i = index;trackBy:trackByIndex;">
-      <label class="col-md-4 control-label" for="carInputYear">Zdjęcie {{ i + 1 }}</label>
-      <div class="col-md-4">
-        <input type="text" placeholder="" [(ngModel)]="car.images[i]" name="a--{{i}}"
-               class="form-control input-md" required="">
-      </div>
-    </div>
-
-    <div class="form-group">
-      <label class="col-md-4 control-label" for="carInputYear">Opis</label>
-      <div class="col-md-4">
-        <textarea type="text" placeholder="" [(ngModel)]="car.info"
-                  class="form-control input-md" required=""></textarea>
-      </div>
-    </div>
-
-    <!-- Button -->
-    <div class="form-group">
-      <label class="col-md-4 control-label" for="carAddButton"></label>
-      <div class="col-md-4">
-        <button id="carAddButton" name="addButton" class="btn btn-success" (click)="createCar()">Dodaj</button>
-      </div>
-    </div>
-
-  </fieldset>
 </div>
