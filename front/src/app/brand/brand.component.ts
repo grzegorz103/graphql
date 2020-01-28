@@ -19,35 +19,11 @@ export class BrandComponent implements OnInit {
   constructor(private brandService: BrandService,
               private apollo: Apollo,
               private matSnackBar: MatSnackBar) {
-    this.fetchBrands();
     this.brand = new Brand();
   }
 
   ngOnInit() {
   }
 
-  fetchBrands() {
-    // @ts-ignore
-    this.brandService.getAll().subscribe((res => this.brands = res.data.brands));
-  }
 
-  createBrand() {
-    this.brandService.create(this.brand).subscribe(res => {
-      this.matSnackBar.open('Dodano');
-    })
-  }
-
-  updateBrand(id: any) {
-    console.log(this.brands.find(e=>e.id===id));
-    this.brandService.update(this.brands.find(e => e.id === id))
-      .subscribe(res=>{
-        this.matSnackBar.open('Zaktualizowano');
-      });
-  }
-
-  deleteBrand(id: any) {
-    this.brandService.delete(id).subscribe(res => {
-      this.matSnackBar.open('Usunięto');
-    })
-  }
 }

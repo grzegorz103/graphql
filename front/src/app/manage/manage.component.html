@@ -1,4 +1,4 @@
-<mat-tab-group dynamicHeight>
+<mat-tab-group dynamicHeight mat-align-tabs="center">
   <mat-tab label="Samochody">
     <div class="example-small-box mat-elevation-z4">
       <table class="table table-hover">
@@ -164,5 +164,52 @@
 
       </fieldset>
     </div>
+  </mat-tab>
+  <mat-tab label="Nowa marka">
+    <table class="table table-hover">
+      <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Nazwa</th>
+        <th scope="col">Edytuj</th>
+        <th scope="col">Usuń</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let brand of brands">
+        <td>{{brand.id}}</td>
+        <td><input type="text" class="form-control" [(ngModel)]="brand.name"></td>
+        <td>
+          <button class="btn btn-warning text-white" (click)="updateBrand(brand.id)">Edytuj</button>
+        </td>
+        <td>
+          <button class="btn btn-danger" (click)="deleteBrand(brand.id)">Usuń</button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+    <fieldset>
+
+      <!-- Form Name -->
+      <legend>Dodawanie nowej marki</legend>
+
+      <!-- Text input-->
+      <div class="form-group">
+        <label class="col-md-4 control-label" for="textinput">Nazwa marki</label>
+        <div class="col-md-4">
+          <input id="textinput" name="textinput" type="text" placeholder="" [(ngModel)]="brand.name"
+                 class="form-control input-md" required="">
+
+        </div>
+      </div>
+      <!-- Button -->
+      <div class="form-group">
+        <label class="col-md-4 control-label" for="addButton"></label>
+        <div class="col-md-4">
+          <button id="addButton" name="addButton" class="btn btn-success" (click)="createBrand()">Dodaj</button>
+        </div>
+      </div>
+
+    </fieldset>
   </mat-tab>
 </mat-tab-group>

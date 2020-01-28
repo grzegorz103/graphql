@@ -21,4 +21,8 @@ public class MotorcycleQuery implements GraphQLQueryResolver {
     public List<Motorcycle> getMotorcycles() {
         return motorcycleService.getAll();
     }
+
+    public Motorcycle getMotorcycleById(Long id) {
+        return motorcycleService.getById(id);
+    }
 }
