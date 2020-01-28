@@ -96,11 +96,6 @@ export class ManageComponent implements OnInit {
     })
   }
 
-  fetchBrands() {
-    // @ts-ignore
-    this.brandService.getAll().subscribe((res => this.brands = res.data.brands));
-  }
-
   createBrand() {
     this.brandService.create(this.brand).subscribe(res => {
       this.matSnackBar.open('Dodano');
@@ -108,7 +103,6 @@ export class ManageComponent implements OnInit {
   }
 
   updateBrand(id: any) {
-    console.log(this.brands.find(e=>e.id===id));
     this.brandService.update(this.brands.find(e => e.id === id))
       .subscribe(res=>{
         this.matSnackBar.open('Zaktualizowano');
