@@ -17,6 +17,7 @@ import {CarDetailsComponent} from "./car-details/car-details.component";
 import {LightboxModule} from "ngx-lightbox";
 import {MotorcycleComponent} from "./motorcycle/motorcycle.component";
 import {ManageComponent} from "./manage/manage.component";
+import {FooterComponent} from "./footer/footer.component";
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import {ManageComponent} from "./manage/manage.component";
     NavbarComponent,
     CarDetailsComponent,
     MotorcycleComponent,
-    ManageComponent
+    ManageComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
