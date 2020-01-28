@@ -97,4 +97,8 @@ export class MotorcycleService {
       refetchQueries: ['motorcycles']
     })
   }
+
+  getById(id: string) {
+
+  }
 }

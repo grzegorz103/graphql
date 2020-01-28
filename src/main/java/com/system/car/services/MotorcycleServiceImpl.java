@@ -57,4 +57,9 @@ public class MotorcycleServiceImpl implements MotorcycleService {
             throw new RuntimeException("Not found");
         }
     }
+
+    @Override
+    public Motorcycle getById(Long id) {
+        return motorcycleRepository.findById(id).orElseThrow(() ->new RuntimeException("Not found"));
+    }
 }

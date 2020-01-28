@@ -13,4 +13,6 @@ public interface MotorcycleService {
     Motorcycle update(Long id, String model, int year, Long brandId);
 
     Long delete(Long id);
+
+    Motorcycle getById(Long id);
 }
