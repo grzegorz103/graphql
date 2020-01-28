@@ -19,6 +19,7 @@ export class ManageComponent implements OnInit {
   brands: any[];
   motorcycles: any[];
   cars: any[];
+  brand = new Brand();
 
   constructor(private motorcycleService: MotorcycleService,
               private brandService: BrandService,
@@ -60,9 +61,9 @@ export class ManageComponent implements OnInit {
 
 
   updateCar(id: any) {
-    console.log(this.cars.find(e=>e.id===id));
+    console.log(this.cars.find(e => e.id === id));
     this.carService.update(this.cars.find(e => e.id === id))
-      .subscribe(res=>{
+      .subscribe(res => {
         this.matSnackBar.open('Zaktualizowano');
       });
   }
@@ -83,15 +84,40 @@ export class ManageComponent implements OnInit {
   }
 
   updateMotorcycles(id: any) {
-  this.motorcycleService.update(this.motorcycles.find(e=>e.id === id))
-    .subscribe(res=>{
-      this.matSnackBar.open('Zaktualizowano');
-    });
+    this.motorcycleService.update(this.motorcycles.find(e => e.id === id))
+      .subscribe(res => {
+        this.matSnackBar.open('Zaktualizowano');
+      });
   }
 
   deleteMotorcycles(id: any) {
     this.motorcycleService.delete(id).subscribe(res => {
       this.matSnackBar.open('Usunięto')
+    })
+  }
+
+  fetchBrands() {
+    // @ts-ignore
+    this.brandService.getAll().subscribe((res => this.brands = res.data.brands));
+  }
+
+  createBrand() {
+    this.brandService.create(this.brand).subscribe(res => {
+      this.matSnackBar.open('Dodano');
+    })
+  }
+
+  updateBrand(id: any) {
+    console.log(this.brands.find(e=>e.id===id));
+    this.brandService.update(this.brands.find(e => e.id === id))
+      .subscribe(res=>{
+        this.matSnackBar.open('Zaktualizowano');
+      });
+  }
+
+  deleteBrand(id: any) {
+    this.brandService.delete(id).subscribe(res => {
+      this.matSnackBar.open('Usunięto');
     })
   }
 }
