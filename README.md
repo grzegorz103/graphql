@@ -4,4 +4,4 @@ GraphQL API integrated with Spring Boot and PostgreSQL database
 
 ## Demo
 
-Try Angular 8 live demo at https://vehicle-site3021.firebaseapp.com/
+Angular 8 live demo at https://vehicle-site3021.firebaseapp.com/
