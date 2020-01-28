@@ -14,7 +14,7 @@ import {Car} from "../models/car";
 export class BrandComponent implements OnInit {
 
   brands: any[];
-  private brand: Brand;
+  brand: Brand;
 
   constructor(private brandService: BrandService,
               private apollo: Apollo,
