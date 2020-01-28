@@ -19,6 +19,22 @@ const getAllQuery = gql`
   }
 `;
 
+const getByIdQuery = gql`
+  query motorcycles($id: ID!){
+    motorcycleById(id: $id) {
+      id
+      model
+      year
+      info
+      brand {
+        id
+        name
+      }
+      images
+   }
+  }
+`;
+
 const createMutation = gql`
  mutation createMotorcycle($model: String!, $year: String!, $images: [String], $info: String!, $brandId: ID!) {
     createMotorcycle(model: $model, year: $year, images: $images, info: $info, brandId: $brandId) {
@@ -96,5 +112,14 @@ export class MotorcycleService {
       },
       refetchQueries: ['motorcycles']
     })
+  }
+
+  getById(id: string) {
+    return this.apollo.watchQuery({
+      query: getByIdQuery,
+      variables: {
+        id: id
+      }
+    }).valueChanges;
   }
 }

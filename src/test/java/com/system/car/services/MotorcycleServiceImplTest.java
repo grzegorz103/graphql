@@ -65,4 +65,13 @@ public class MotorcycleServiceImplTest {
         assertThat(motorcycleService.delete(motorcycle.getId())).isEqualTo(motorcycle.getId());
         verify(motorcycleRepository, times(1)).deleteById(motorcycle.getId());
     }
+
+    @Test
+    public void getByIdTest() {
+        Motorcycle motorcycle = mock(Motorcycle.class);
+        when(motorcycleRepository.findById(anyLong())).thenReturn(java.util.Optional.of(motorcycle));
+
+        assertThat(motorcycleService.getById(1L)).isEqualTo(motorcycle);
+        verify(motorcycleRepository, times(1)).findById(anyLong());
+    }
 }

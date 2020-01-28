@@ -24,7 +24,6 @@ public class MotorcycleQueryTests {
     @InjectMocks
     private MotorcycleQuery motorcycleQuery;
 
-
     @Test
     public void getAllTest() {
         List<Motorcycle> list = Arrays.asList(mock(Motorcycle.class), mock(Motorcycle.class));
@@ -32,5 +31,14 @@ public class MotorcycleQueryTests {
 
         assertThat(motorcycleQuery.getMotorcycles()).isEqualTo(list);
         verify(motorcycleService, times(1)).getAll();
+    }
+
+    @Test
+    public void getByIdTest(){
+        Motorcycle mocked = mock(Motorcycle.class);
+
+        when(motorcycleService.getById(anyLong())).thenReturn(mocked);
+        assertThat(motorcycleQuery.getMotorcycleById(1L)).isEqualTo(mocked);
+        verify(motorcycleService, times(1)).getById(anyLong());
     }
 }
