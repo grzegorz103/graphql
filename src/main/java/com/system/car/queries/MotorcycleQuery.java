@@ -22,7 +22,7 @@ public class MotorcycleQuery implements GraphQLQueryResolver {
         return motorcycleService.getAll();
     }
 
-    public Motorcycle getById(Long id) {
+    public Motorcycle getMotorcycleById(Long id) {
         return motorcycleService.getById(id);
     }
 }

@@ -38,7 +38,7 @@ public class MotorcycleQueryTests {
         Motorcycle mocked = mock(Motorcycle.class);
 
         when(motorcycleService.getById(anyLong())).thenReturn(mocked);
-        assertThat(motorcycleQuery.getById(1L)).isEqualTo(mocked);
+        assertThat(motorcycleQuery.getMotorcycleById(1L)).isEqualTo(mocked);
         verify(motorcycleService, times(1)).getById(anyLong());
     }
 }
