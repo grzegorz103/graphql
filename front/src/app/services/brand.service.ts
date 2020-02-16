@@ -67,7 +67,7 @@ export class BrandService {
         id: brand.id,
         name: brand.name
       },
-      refetchQueries: ['brands']
+      refetchQueries: ['brands', 'cars', 'motorcycles']
     })
   }
   delete(id: any) {
@@ -76,7 +76,7 @@ export class BrandService {
       variables: {
         id: id
       },
-      refetchQueries: ['brands']
+      refetchQueries: ['brands', 'cars', 'motorcycles']
     })
   }
 }
