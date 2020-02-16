@@ -37,4 +37,10 @@ export class MotorcycleDetailsComponent implements OnInit {
         }
       );
   }
+
+  open(index: number): void {
+    // open lightbox
+    this._lightbox.open(this.images, index);
+  }
+
 }
