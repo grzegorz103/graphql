@@ -34,6 +34,7 @@
         <legend>Dodawanie nowego samochodu</legend>
 
         <div class="form-group" class="col-md-4">
+          <label class="col-md-4 control-label">Marka</label>
           <select class="browser-default custom-select" [(ngModel)]="car.brand">
             <option *ngFor="let brand of brands" [ngValue]="brand">{{ brand.name }}</option>
           </select>
@@ -116,6 +117,7 @@
         <legend>Dodawanie nowego motocykla</legend>
 
         <div class="form-group" class="col-md-4">
+          <label class="col-md-4 control-label">Marka</label>
           <select class="browser-default custom-select" [(ngModel)]="motorcycle.brand">
             <option *ngFor="let brand of brands" [ngValue]="brand">{{ brand.name }}</option>
           </select>
