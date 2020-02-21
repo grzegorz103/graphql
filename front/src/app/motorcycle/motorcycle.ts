@@ -1,6 +1,6 @@
-import {Brand} from "./brand";
+import {Brand} from "../brand/brand";
 
-export class Car {
+export class Motorcycle {
   id: any;
   model: string;
   year: number;

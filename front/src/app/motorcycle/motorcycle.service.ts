@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {Apollo} from "apollo-angular";
 import gql from "graphql-tag";
-import {Motorcycle} from "../models/motorcycle";
+import {Motorcycle} from "./motorcycle";
 
 const getAllQuery = gql`
   query motorcycles {

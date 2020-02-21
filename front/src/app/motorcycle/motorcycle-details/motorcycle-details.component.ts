@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {Lightbox} from "ngx-lightbox";
 import {ActivatedRoute} from "@angular/router";
-import {MotorcycleService} from "../../services/motorcycle.service";
-import {Motorcycle} from "../../models/motorcycle";
+import {MotorcycleService} from "../motorcycle.service";
+import {Motorcycle} from "../motorcycle";
 
 @Component({
   selector: 'app-motorcycle-details',

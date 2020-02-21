@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {VehicleService} from "../services/vehicle.service";
-import {BrandService} from "../services/brand.service";
-import {Brand} from "../models/brand";
+import {VehicleService} from "../motorcycle/vehicle.service";
+import {BrandService} from "../brand/brand.service";
+import {Brand} from "../brand/brand";
 
 @Component({
   selector: 'app-vehicle',

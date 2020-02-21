@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Apollo} from "apollo-angular";
 import gql from "graphql-tag";
-import {Brand} from "../models/brand";
+import {Brand} from "./brand";
 
 const getAllQuery = gql`
   query brands {

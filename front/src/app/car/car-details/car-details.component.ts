@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {CarService} from "../../services/car.service";
+import {CarService} from "../car.service";
 import {ActivatedRoute} from "@angular/router";
-import {Car} from "../../models/car";
+import {Car} from "../car";
 import {Lightbox} from "ngx-lightbox";
 
 @Component({

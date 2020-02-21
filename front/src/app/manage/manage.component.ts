@@ -1,11 +1,11 @@
 import {Component, OnInit} from '@angular/core';
-import {Motorcycle} from "../models/motorcycle";
-import {MotorcycleService} from "../services/motorcycle.service";
+import {Motorcycle} from "../motorcycle/motorcycle";
+import {MotorcycleService} from "../motorcycle/motorcycle.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
-import {Car} from "../models/car";
-import {BrandService} from "../services/brand.service";
-import {CarService} from "../services/car.service";
-import {Brand} from "../models/brand";
+import {Car} from "../car/car";
+import {BrandService} from "../brand/brand.service";
+import {CarService} from "../car/car.service";
+import {Brand} from "../brand/brand";
 
 @Component({
   selector: 'app-manage',

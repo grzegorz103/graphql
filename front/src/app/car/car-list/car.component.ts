@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {BrandService} from "../../services/brand.service";
+import {BrandService} from "../../brand/brand.service";
 import {Apollo} from "apollo-angular";
 import {MatSnackBar} from "@angular/material/snack-bar";
-import {CarService} from "../../services/car.service";
-import {Brand} from "../../models/brand";
-import {Car} from "../../models/car";
+import {CarService} from "../car.service";
+import {Brand} from "../../brand/brand";
+import {Car} from "../car";
 import {DomSanitizer} from "@angular/platform-browser";
 
 @Component({
