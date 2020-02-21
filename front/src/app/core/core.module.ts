@@ -3,7 +3,7 @@ import {CommonModule} from '@angular/common';
 
 import {CoreRoutingModule} from './core-routing.module';
 import {CarComponent} from "./car/car-list/car.component";
-import {VehicleComponent} from "./vehicle/vehicle.component";
+import {VehicleComponent} from "../shared/vehicle/vehicle.component";
 import {CarDetailsComponent} from "./car/car-details/car-details.component";
 import {MotorcycleComponent} from "./motorcycle/motorcycle-list/motorcycle.component";
 import {MotorcycleDetailsComponent} from "./motorcycle/motorcycle-details/motorcycle-details.component";
@@ -21,7 +21,6 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 @NgModule({
   declarations: [CarComponent,
-    VehicleComponent,
     CarDetailsComponent,
     MotorcycleComponent,
     MotorcycleDetailsComponent,

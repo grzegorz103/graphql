@@ -5,7 +5,7 @@
   </div>
 
   <mat-grid-list cols="4" rowHeight="2:1" [gutterSize]="'20px'">
-    <mat-grid-tile *ngFor="let m of motorcycles" [routerLink]="['/motorcycles', m.id, 'details']">
+    <mat-grid-tile *ngFor="let m of motorcycles" [routerLink]="['/core/motorcycles', m.id, 'details']">
       <div class="image" [style.backgroundImage]="'url('+m.images[0]+')'">
         <div class="info">{{m.model}}</div>
       </div>
