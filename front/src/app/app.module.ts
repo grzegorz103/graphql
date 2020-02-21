@@ -12,18 +12,18 @@ import {MDBBootstrapModule} from "angular-bootstrap-md";
 import {FormsModule} from "@angular/forms";
 import {LightboxModule} from "ngx-lightbox";
 import {FooterComponent} from "./shared/footer/footer.component";
+import {SharedModule} from "./shared/shared.module";
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent,
-    FooterComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     GraphQLModule,
+    SharedModule,
     LightboxModule,
     MaterialModule,
     MDBBootstrapModule.forRoot(),
