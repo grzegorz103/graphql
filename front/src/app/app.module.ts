@@ -6,38 +6,24 @@ import { AppComponent } from './app.component';
 import { GraphQLModule } from './graphql.module';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {NavbarComponent} from "./navbar/navbar.component";
-import {MaterialModule} from "./material/material.module";
+import {NavbarComponent} from "./shared/navbar/navbar.component";
+import {MaterialModule} from "./utils/material/material.module";
 import {MDBBootstrapModule} from "angular-bootstrap-md";
 import {FormsModule} from "@angular/forms";
-import {CarComponent} from "./car/car.component";
-import {BrandComponent} from "./brand/brand.component";
-import {VehicleComponent} from "./vehicle/vehicle.component";
-import {CarDetailsComponent} from "./car-details/car-details.component";
 import {LightboxModule} from "ngx-lightbox";
-import {MotorcycleComponent} from "./motorcycle/motorcycle.component";
-import {ManageComponent} from "./manage/manage.component";
-import {FooterComponent} from "./footer/footer.component";
-import {MotorcycleDetailsComponent} from "./motorcycle-details/motorcycle-details.component";
+import {FooterComponent} from "./shared/footer/footer.component";
+import {SharedModule} from "./shared/shared.module";
 
 @NgModule({
   declarations: [
     AppComponent,
-    CarComponent,
-    BrandComponent,
-    VehicleComponent,
-    NavbarComponent,
-    CarDetailsComponent,
-    MotorcycleComponent,
-    ManageComponent,
-    FooterComponent,
-    MotorcycleDetailsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     GraphQLModule,
+    SharedModule,
     LightboxModule,
     MaterialModule,
     MDBBootstrapModule.forRoot(),
