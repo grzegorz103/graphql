@@ -1,0 +1,17 @@
+import {Brand} from "../brand/brand";
+
+export class Car {
+  id: any;
+  model: string;
+  year: number;
+  brand: Brand = new Brand();
+  images: string[];
+  info: string;
+
+  constructor() {
+    this.images = [];
+    this.images.push('');
+    this.images.push('');
+    this.images.push('');
+  }
+}
