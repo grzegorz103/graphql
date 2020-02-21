@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {MotorcycleService} from "../services/motorcycle.service";
-import {Motorcycle} from "../models/motorcycle";
-import {Brand} from "../models/brand";
-import {BrandService} from "../services/brand.service";
+import {MotorcycleService} from "../../services/motorcycle.service";
+import {Motorcycle} from "../../models/motorcycle";
+import {Brand} from "../../models/brand";
+import {BrandService} from "../../services/brand.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({

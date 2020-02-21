@@ -1,13 +1,13 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 import * as path from "path";
-import {CarComponent} from "./car/car.component";
+import {CarComponent} from "./car/car-list/car.component";
 import {BrandComponent} from "./brand/brand.component";
 import {VehicleComponent} from "./vehicle/vehicle.component";
-import {CarDetailsComponent} from "./car-details/car-details.component";
-import {MotorcycleComponent} from "./motorcycle/motorcycle.component";
+import {CarDetailsComponent} from "./car/car-details/car-details.component";
+import {MotorcycleComponent} from "./motorcycle/motorcycle-list/motorcycle.component";
 import {ManageComponent} from "./manage/manage.component";
-import {MotorcycleDetailsComponent} from "./motorcycle-details/motorcycle-details.component";
+import {MotorcycleDetailsComponent} from "./motorcycle/motorcycle-details/motorcycle-details.component";
 
 
 const routes: Routes = [
