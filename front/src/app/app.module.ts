@@ -10,28 +10,14 @@ import {NavbarComponent} from "./shared/navbar/navbar.component";
 import {MaterialModule} from "./utils/material/material.module";
 import {MDBBootstrapModule} from "angular-bootstrap-md";
 import {FormsModule} from "@angular/forms";
-import {CarComponent} from "./car/car-list/car.component";
-import {BrandComponent} from "./brand/brand.component";
-import {VehicleComponent} from "./vehicle/vehicle.component";
-import {CarDetailsComponent} from "./car/car-details/car-details.component";
 import {LightboxModule} from "ngx-lightbox";
-import {MotorcycleComponent} from "./motorcycle/motorcycle-list/motorcycle.component";
-import {ManageComponent} from "./manage/manage.component";
 import {FooterComponent} from "./shared/footer/footer.component";
-import {MotorcycleDetailsComponent} from "./motorcycle/motorcycle-details/motorcycle-details.component";
 
 @NgModule({
   declarations: [
     AppComponent,
-    CarComponent,
-    BrandComponent,
-    VehicleComponent,
     NavbarComponent,
-    CarDetailsComponent,
-    MotorcycleComponent,
-    ManageComponent,
-    FooterComponent,
-    MotorcycleDetailsComponent
+    FooterComponent
   ],
   imports: [
     BrowserModule,
