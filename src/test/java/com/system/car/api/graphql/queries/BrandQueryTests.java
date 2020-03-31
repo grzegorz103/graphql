@@ -1,4 +1,4 @@
-package com.system.car.queries;
+package com.system.car.api.graphql.queries;
 
 import com.system.car.models.Brand;
 import com.system.car.services.BrandService;

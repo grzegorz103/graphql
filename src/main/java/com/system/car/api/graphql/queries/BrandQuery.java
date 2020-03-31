@@ -1,7 +1,6 @@
-package com.system.car.queries;
+package com.system.car.api.graphql.queries;
 
 import com.coxautodev.graphql.tools.GraphQLQueryResolver;
-import com.system.car.dao.BrandRepository;
 import com.system.car.models.Brand;
 import com.system.car.services.BrandService;
 import org.springframework.beans.factory.annotation.Autowired;

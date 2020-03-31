@@ -1,9 +1,8 @@
-package com.system.car.mutations;
+package com.system.car.api.graphql.mutations;
 
 import com.coxautodev.graphql.tools.GraphQLMutationResolver;
 import com.system.car.models.Motorcycle;
 import com.system.car.services.MotorcycleService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

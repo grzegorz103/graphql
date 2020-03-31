@@ -1,8 +1,7 @@
-package com.system.car.queries;
+package com.system.car.api.graphql.queries;
 
 import com.system.car.models.Motorcycle;
 import com.system.car.services.MotorcycleService;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;

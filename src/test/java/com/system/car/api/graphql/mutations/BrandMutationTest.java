@@ -1,4 +1,4 @@
-package com.system.car.mutations;
+package com.system.car.api.graphql.mutations;
 
 import com.system.car.models.Brand;
 import com.system.car.services.BrandService;
