@@ -1,5 +1,6 @@
 package com.system.car.models;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,6 +20,7 @@ public abstract class Vehicle {
     private Long id;
 
     @ManyToOne(fetch = FetchType.EAGER)
+    @JsonManagedReference
     private Brand brand;
 
     private String model;
