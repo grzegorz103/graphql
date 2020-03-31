@@ -1,4 +1,4 @@
-package com.system.car.mutations;
+package com.system.car.api.graphql.mutations;
 
 import com.coxautodev.graphql.tools.GraphQLMutationResolver;
 import com.system.car.models.Car;

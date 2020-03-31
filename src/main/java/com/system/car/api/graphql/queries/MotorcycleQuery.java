@@ -1,10 +1,8 @@
-package com.system.car.queries;
+package com.system.car.api.graphql.queries;
 
 import com.coxautodev.graphql.tools.GraphQLQueryResolver;
-import com.system.car.dao.MotorcycleRepository;
 import com.system.car.models.Motorcycle;
 import com.system.car.services.MotorcycleService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

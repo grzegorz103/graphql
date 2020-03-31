@@ -1,4 +1,4 @@
-package com.system.car.mutations;
+package com.system.car.api.graphql.mutations;
 
 import com.system.car.models.Motorcycle;
 import com.system.car.services.MotorcycleService;

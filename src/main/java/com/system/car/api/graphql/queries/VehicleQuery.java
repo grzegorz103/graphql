@@ -1,11 +1,9 @@
-package com.system.car.queries;
+package com.system.car.api.graphql.queries;
 
 import com.coxautodev.graphql.tools.GraphQLQueryResolver;
 import com.system.car.dto.VehicleOut;
 import com.system.car.mappers.VehicleMapper;
-import com.system.car.models.Vehicle;
 import com.system.car.services.VehicleService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
