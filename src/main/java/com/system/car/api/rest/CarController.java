@@ -26,7 +26,7 @@ public class CarController {
         return carService.getCarById(id);
     }
 
-    @GetMapping
+    @GetMapping(produces = {"application/hal+json"})
     public CollectionModel<Car> getAll() {
         List<Car> cars = carService.getCars();
 
