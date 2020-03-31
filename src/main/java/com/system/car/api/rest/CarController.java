@@ -1,13 +1,15 @@
 package com.system.car.api.rest;
 
-import com.system.car.dto.CarOut;
 import com.system.car.models.Car;
 import com.system.car.services.CarService;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.hateoas.CollectionModel;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 @RestController
 @RequestMapping("/api/cars")
@@ -25,8 +27,15 @@ public class CarController {
     }
 
     @GetMapping
-    public List<Car> getAll() {
-        return carService.getCars();
+    public CollectionModel<Car> getAll() {
+        List<Car> cars = carService.getCars();
+
+        cars.forEach(car -> {
+            car.add(linkTo(methodOn(CarController.class).getById(car.getId())).withSelfRel());
+            car.add(linkTo(methodOn(BrandController.class).getById(car.getBrand().getId())).withRel("brands"));
+        });
+
+        return new CollectionModel<>(cars, linkTo(methodOn(CarController.class).getAll()).withSelfRel());
     }
 
     @PostMapping
