@@ -1,5 +1,6 @@
 package com.system.car.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,6 +20,7 @@ public class Brand {
     private Long id;
 
     @OneToMany(mappedBy = "brand", cascade = CascadeType.ALL)
+    @JsonBackReference
     public List<Vehicle> vehicles;
 
     private String name;

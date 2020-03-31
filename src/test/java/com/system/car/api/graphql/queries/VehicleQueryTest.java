@@ -1,8 +1,6 @@
 package com.system.car.api.graphql.queries;
 
 import com.system.car.CarApplication;
-import com.system.car.mappers.BrandMapperImpl;
-import com.system.car.mappers.VehicleMapperImpl;
 import com.system.car.models.Vehicle;
 import com.system.car.services.VehicleService;
 import org.junit.Test;
