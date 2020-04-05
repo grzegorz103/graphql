@@ -4,6 +4,7 @@ import com.system.car.api.rest.BrandController;
 import com.system.car.api.rest.CarController;
 import com.system.car.api.rest.mappers.CarModelMapper;
 import com.system.car.api.rest.resources.CarModel;
+import com.system.car.api.rest.utils.LinkUtils;
 import com.system.car.models.Car;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,12 +20,13 @@ public class CarModelAssembler extends RepresentationModelAssemblerSupport<Car, 
 
     private final CarModelMapper carModelMapper;
 
-    private final BrandModelAssembler brandModelAssembler;
+    private final LinkUtils linkUtils;
 
-    public CarModelAssembler(CarModelMapper carModelMapper, BrandModelAssembler brandModelAssembler) {
+    public CarModelAssembler(CarModelMapper carModelMapper,
+                             LinkUtils linkUtils) {
         super(CarController.class, CarModel.class);
         this.carModelMapper = carModelMapper;
-        this.brandModelAssembler = brandModelAssembler;
+        this.linkUtils = linkUtils;
     }
 
     @NotNull
@@ -36,7 +38,7 @@ public class CarModelAssembler extends RepresentationModelAssemblerSupport<Car, 
                         .getById(entity.getId()))
                 .withSelfRel());
 
-        addBrandLink(entity, carModel);
+        linkUtils.addBrandLink(entity, carModel);
 
         return carModel;
     }
@@ -51,12 +53,6 @@ public class CarModelAssembler extends RepresentationModelAssemblerSupport<Car, 
         ).withSelfRel());
 
         return carModels;
-    }
-
-    private void addBrandLink(@NotNull Car entity, CarModel carModel) {
-        if (entity.getBrand() != null) {
-            carModel.setBrand(brandModelAssembler.toModel(entity.getBrand()));
-        }
     }
 
 }
