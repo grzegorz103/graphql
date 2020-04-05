@@ -1,6 +1,5 @@
-package com.system.car.dto;
+package com.system.car.api.graphql.dto;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 

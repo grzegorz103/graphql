@@ -1,6 +1,6 @@
-package com.system.car.mappers;
+package com.system.car.api.graphql.mappers;
 
-import com.system.car.dto.BrandOut;
+import com.system.car.api.graphql.dto.BrandOut;
 import com.system.car.models.Brand;
 import org.mapstruct.Mapper;
 

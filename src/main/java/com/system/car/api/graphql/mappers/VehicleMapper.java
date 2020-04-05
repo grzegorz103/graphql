@@ -1,12 +1,9 @@
-package com.system.car.mappers;
+package com.system.car.api.graphql.mappers;
 
-import com.system.car.dto.VehicleOut;
+import com.system.car.api.graphql.dto.VehicleOut;
 import com.system.car.models.Vehicle;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
-import org.mapstruct.ValueMapping;
-
-import java.util.List;
 
 @Mapper(componentModel = "spring", uses = BrandMapper.class)
 public interface VehicleMapper {
