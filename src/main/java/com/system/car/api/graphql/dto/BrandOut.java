@@ -1,11 +1,8 @@
-package com.system.car.dto;
+package com.system.car.api.graphql.dto;
 
-import com.system.car.models.Vehicle;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
