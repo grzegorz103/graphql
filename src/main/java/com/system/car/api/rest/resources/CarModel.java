@@ -4,9 +4,11 @@ import com.system.car.models.Brand;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import org.springframework.hateoas.server.core.Relation;
 
 import java.util.List;
 
+@Relation(collectionRelation = "cars")
 @EqualsAndHashCode(callSuper = true)
 @Data
 @NoArgsConstructor
