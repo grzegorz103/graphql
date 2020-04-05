@@ -13,7 +13,7 @@ import java.util.List;
 @NoArgsConstructor
 public class VehicleModel extends RepresentationModel<VehicleModel> {
 
-    private Brand brand;
+    private BrandModel brand;
 
     private String model;
 
