@@ -39,6 +39,15 @@ public class BrandModelAssembler extends RepresentationModelAssemblerSupport<Bra
     @NotNull
     @Override
     public CollectionModel<BrandModel> toCollectionModel(@NotNull Iterable<? extends Brand> entities) {
-        return super.toCollectionModel(entities);
+        CollectionModel<BrandModel> brandModels = super.toCollectionModel(entities);
+        brandModels.add(
+                linkTo(
+                        methodOn(BrandController.class)
+                                .getAll()
+                ).withSelfRel()
+        );
+
+        return brandModels;
     }
+
 }

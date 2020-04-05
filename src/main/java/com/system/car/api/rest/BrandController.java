@@ -30,4 +30,9 @@ public class BrandController {
         return brandModelAssembler.toCollectionModel(brandService.getAll());
     }
 
+    @PostMapping
+    public BrandModel create(@RequestBody String name){
+        return brandModelAssembler.toModel(brandService.create(name));
+    }
+
 }
