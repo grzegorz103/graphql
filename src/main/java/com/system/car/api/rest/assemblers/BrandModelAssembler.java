@@ -31,7 +31,11 @@ public class BrandModelAssembler extends RepresentationModelAssemblerSupport<Bra
                 linkTo(
                         methodOn(BrandController.class)
                                 .getById(entity.getId())
-                ).withSelfRel());
+                ).withSelfRel(),
+                linkTo(
+                        methodOn(BrandController.class).getVehiclesByBrandId(entity.getId())
+                ).withRel("vehicles")
+        );
 
         return brandModel;
     }
