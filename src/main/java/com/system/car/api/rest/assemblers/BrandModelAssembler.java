@@ -6,6 +6,7 @@ import com.system.car.api.rest.resources.BrandModel;
 import com.system.car.models.Brand;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.server.mvc.RepresentationModelAssemblerSupport;
 import org.springframework.stereotype.Component;
 
@@ -35,4 +36,9 @@ public class BrandModelAssembler extends RepresentationModelAssemblerSupport<Bra
         return brandModel;
     }
 
+    @NotNull
+    @Override
+    public CollectionModel<BrandModel> toCollectionModel(@NotNull Iterable<? extends Brand> entities) {
+        return super.toCollectionModel(entities);
+    }
 }
