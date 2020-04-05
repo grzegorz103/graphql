@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 
 @RestController
-@RequestMapping("/api/cars")
+@RequestMapping(value = "/api/cars", produces = {"application/hal+json"})
 public class CarController {
 
     private final CarService carService;
@@ -28,21 +28,21 @@ public class CarController {
         return carModelAssembler.toModel(carService.getCarById(id));
     }
 
-    @GetMapping(produces = {"application/hal+json"})
+    @GetMapping
     public CollectionModel<CarModel> getAll() {
         return carModelAssembler.toCollectionModel(carService.getCars());
     }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Car create(@RequestBody Car car) {
-        return carService.create(car.getModel(), car.getYear(), car.getImages(), car.getInfo(), car.getBrand().getId());
+    public CarModel create(@RequestBody Car car) {
+        return carModelAssembler.toModel(carService.create(car.getModel(), car.getYear(), car.getImages(), car.getInfo(), car.getBrand().getId()));
     }
 
     @PutMapping("/id")
-    public Car update(@PathVariable("id") Long id,
-                      @RequestBody Car car) {
-        return carService.update(id, car.getModel(), car.getYear(), car.getBrand().getId());
+    public CarModel update(@PathVariable("id") Long id,
+                           @RequestBody Car car) {
+        return carModelAssembler.toModel(carService.update(id, car.getModel(), car.getYear(), car.getBrand().getId()));
     }
 
     @DeleteMapping("/id")
