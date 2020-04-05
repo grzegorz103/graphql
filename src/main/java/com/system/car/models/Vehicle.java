@@ -14,7 +14,7 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public abstract class Vehicle extends RepresentationModel<Vehicle> {
+public abstract class Vehicle{
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

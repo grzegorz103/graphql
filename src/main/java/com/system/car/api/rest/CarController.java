@@ -1,53 +1,48 @@
 package com.system.car.api.rest;
 
+import com.system.car.api.rest.assemblers.CarModelAssembler;
+import com.system.car.api.rest.resources.CarModel;
 import com.system.car.models.Car;
 import com.system.car.services.CarService;
 import org.springframework.hateoas.CollectionModel;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
-import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
-import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 @RestController
-@RequestMapping("/api/cars")
+@RequestMapping(value = "/api/cars", produces = {"application/hal+json"})
 public class CarController {
 
     private final CarService carService;
 
-    public CarController(CarService carService) {
+    private final CarModelAssembler carModelAssembler;
+
+    public CarController(CarService carService,
+                         CarModelAssembler carModelAssembler) {
         this.carService = carService;
+        this.carModelAssembler = carModelAssembler;
     }
 
     @GetMapping("/{id}")
-    public Car getById(@PathVariable("id") Long id) {
-        return carService.getCarById(id);
+    public CarModel getById(@PathVariable("id") Long id) {
+        return carModelAssembler.toModel(carService.getCarById(id));
     }
 
-    @GetMapping(produces = {"application/hal+json"})
-    public CollectionModel<Car> getAll() {
-        List<Car> cars = carService.getCars();
-
-        cars.forEach(car -> {
-            car.add(linkTo(methodOn(CarController.class).getById(car.getId())).withSelfRel());
-            car.add(linkTo(methodOn(BrandController.class).getById(car.getBrand().getId())).withRel("brands"));
-        });
-
-        return new CollectionModel<>(cars, linkTo(methodOn(CarController.class).getAll()).withSelfRel());
+    @GetMapping
+    public CollectionModel<CarModel> getAll() {
+        return carModelAssembler.toCollectionModel(carService.getCars());
     }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Car create(@RequestBody Car car) {
-        return carService.create(car.getModel(), car.getYear(), car.getImages(), car.getInfo(), car.getBrand().getId());
+    public CarModel create(@RequestBody Car car) {
+        return carModelAssembler.toModel(carService.create(car.getModel(), car.getYear(), car.getImages(), car.getInfo(), car.getBrand().getId()));
     }
 
     @PutMapping("/id")
-    public Car update(@PathVariable("id") Long id,
-                      @RequestBody Car car) {
-        return carService.update(id, car.getModel(), car.getYear(), car.getBrand().getId());
+    public CarModel update(@PathVariable("id") Long id,
+                           @RequestBody Car car) {
+        return carModelAssembler.toModel(carService.update(id, car.getModel(), car.getYear(), car.getBrand().getId()));
     }
 
     @DeleteMapping("/id")
