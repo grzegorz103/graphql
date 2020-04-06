@@ -9,4 +9,5 @@ public interface VehicleService {
 
     List<Vehicle> getAll();
 
+    Vehicle getById(Long id);
 }
