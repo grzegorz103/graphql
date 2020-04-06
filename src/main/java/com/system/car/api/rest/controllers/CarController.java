@@ -1,4 +1,4 @@
-package com.system.car.api.rest;
+package com.system.car.api.rest.controllers;
 
 import com.system.car.api.rest.assemblers.CarModelAssembler;
 import com.system.car.api.rest.resources.CarModel;
