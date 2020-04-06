@@ -20,4 +20,9 @@ public class VehicleServiceImpl implements VehicleService {
     public List<Vehicle> getAll() {
         return vehicleRepository.findAllSorted();
     }
+
+    @Override
+    public Vehicle getById(Long id) {
+        return vehicleRepository.findById(id).orElseThrow(() -> new RuntimeException("Not found"));
+    }
 }

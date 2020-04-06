@@ -1,15 +1,12 @@
 package com.system.car.api.rest.assemblers;
 
-import com.system.car.api.rest.CarController;
-import com.system.car.api.rest.MotorcycleController;
-import com.system.car.api.rest.mappers.CarModelMapper;
+import com.system.car.api.rest.controllers.CarController;
+import com.system.car.api.rest.controllers.MotorcycleController;
 import com.system.car.api.rest.mappers.MotorcycleModelMapper;
-import com.system.car.api.rest.resources.CarModel;
 import com.system.car.api.rest.resources.MotorcycleModel;
 import com.system.car.api.rest.utils.LinkUtils;
 import com.system.car.models.Motorcycle;
 import org.jetbrains.annotations.NotNull;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.server.mvc.RepresentationModelAssemblerSupport;
 import org.springframework.stereotype.Component;
 

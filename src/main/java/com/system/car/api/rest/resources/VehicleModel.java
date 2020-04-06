@@ -5,9 +5,11 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.hateoas.RepresentationModel;
+import org.springframework.hateoas.server.core.Relation;
 
 import java.util.List;
 
+@Relation(collectionRelation = "vehicles")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
