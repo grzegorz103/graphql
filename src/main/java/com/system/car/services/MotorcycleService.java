@@ -1,6 +1,8 @@
 package com.system.car.services;
 
 import com.system.car.models.Motorcycle;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 
@@ -15,4 +17,6 @@ public interface MotorcycleService {
     Long delete(Long id);
 
     Motorcycle getById(Long id);
+
+    Page<Motorcycle> getAllPaged(Pageable pageable);
 }

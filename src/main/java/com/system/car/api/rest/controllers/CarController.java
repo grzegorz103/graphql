@@ -4,6 +4,9 @@ import com.system.car.api.rest.assemblers.CarModelAssembler;
 import com.system.car.api.rest.resources.CarModel;
 import com.system.car.models.Car;
 import com.system.car.services.CarService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PagedResourcesAssembler;
 import org.springframework.hateoas.CollectionModel;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -17,10 +20,14 @@ public class CarController {
 
     private final CarModelAssembler carModelAssembler;
 
+    private final PagedResourcesAssembler<Car> pagedResourcesAssembler;
+
     public CarController(CarService carService,
-                         CarModelAssembler carModelAssembler) {
+                         CarModelAssembler carModelAssembler,
+                         PagedResourcesAssembler<Car> pagedResourcesAssembler) {
         this.carService = carService;
         this.carModelAssembler = carModelAssembler;
+        this.pagedResourcesAssembler = pagedResourcesAssembler;
     }
 
     @GetMapping("/{id}")
@@ -29,8 +36,8 @@ public class CarController {
     }
 
     @GetMapping
-    public CollectionModel<CarModel> getAll() {
-        return carModelAssembler.toCollectionModel(carService.getCars());
+    public CollectionModel<CarModel> getAll(Pageable pageable) {
+        return pagedResourcesAssembler.toModel(carService.getCarsPaged(pageable), carModelAssembler);
     }
 
     @PostMapping

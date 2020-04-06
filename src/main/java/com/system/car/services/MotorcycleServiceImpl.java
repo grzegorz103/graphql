@@ -3,6 +3,8 @@ package com.system.car.services;
 import com.system.car.dao.MotorcycleRepository;
 import com.system.car.models.Motorcycle;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -33,7 +35,7 @@ public class MotorcycleServiceImpl implements MotorcycleService {
         motorcycle.setModel(model);
         motorcycle.setYear(year);
         motorcycle.setInfo(info);
-        motorcycle.setImages(images.stream().filter(e-> !StringUtils.isBlank(e)).collect(Collectors.toList()));
+        motorcycle.setImages(images.stream().filter(e -> !StringUtils.isBlank(e)).collect(Collectors.toList()));
         motorcycle.setBrand(brandService.getById(brandId));
         return motorcycleRepository.save(motorcycle);
     }
@@ -60,6 +62,11 @@ public class MotorcycleServiceImpl implements MotorcycleService {
 
     @Override
     public Motorcycle getById(Long id) {
-        return motorcycleRepository.findById(id).orElseThrow(() ->new RuntimeException("Not found"));
+        return motorcycleRepository.findById(id).orElseThrow(() -> new RuntimeException("Not found"));
+    }
+
+    @Override
+    public Page<Motorcycle> getAllPaged(Pageable pageable) {
+        return motorcycleRepository.findAll(pageable);
     }
 }

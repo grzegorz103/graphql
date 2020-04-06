@@ -4,6 +4,8 @@ import com.system.car.dao.CarRepository;
 import com.system.car.models.Car;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -60,5 +62,10 @@ public class CarServiceImpl implements CarService {
     public Long delete(Long id) {
         carRepository.deleteById(id);
         return id;
+    }
+
+    @Override
+    public Page<Car> getCarsPaged(Pageable pageable) {
+        return carRepository.findAll(pageable);
     }
 }
