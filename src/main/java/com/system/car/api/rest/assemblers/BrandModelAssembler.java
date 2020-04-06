@@ -5,6 +5,7 @@ import com.system.car.api.rest.mappers.BrandModelMapper;
 import com.system.car.api.rest.resources.BrandModel;
 import com.system.car.models.Brand;
 import org.jetbrains.annotations.NotNull;
+import org.springframework.data.domain.Pageable;
 import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.server.mvc.RepresentationModelAssemblerSupport;
 import org.springframework.stereotype.Component;
@@ -46,7 +47,7 @@ public class BrandModelAssembler extends RepresentationModelAssemblerSupport<Bra
         brandModels.add(
                 linkTo(
                         methodOn(BrandController.class)
-                                .getAll()
+                                .getAll(Pageable.unpaged())
                 ).withSelfRel()
         );
 

@@ -6,6 +6,7 @@ import com.system.car.api.rest.resources.CarModel;
 import com.system.car.api.rest.utils.LinkUtils;
 import com.system.car.models.Car;
 import org.jetbrains.annotations.NotNull;
+import org.springframework.data.domain.Pageable;
 import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.server.mvc.RepresentationModelAssemblerSupport;
 import org.springframework.stereotype.Component;
@@ -47,7 +48,7 @@ public class CarModelAssembler extends RepresentationModelAssemblerSupport<Car, 
         CollectionModel<CarModel> carModels = super.toCollectionModel(entities);
         carModels.add(linkTo(
                 methodOn(CarController.class)
-                        .getAll()
+                        .getAll(Pageable.unpaged())
         ).withSelfRel());
 
         return carModels;

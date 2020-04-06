@@ -1,6 +1,8 @@
 package com.system.car.services;
 
 import com.system.car.models.Car;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 
@@ -15,4 +17,6 @@ public interface CarService {
     Car update(Long id, String model, int year, Long brandId);
 
     Long delete(Long id);
+
+    Page<Car> getCarsPaged(Pageable pageable);
 }

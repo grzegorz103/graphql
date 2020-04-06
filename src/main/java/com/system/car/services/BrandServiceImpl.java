@@ -3,6 +3,8 @@ package com.system.car.services;
 import com.system.car.dao.BrandRepository;
 import com.system.car.models.Brand;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -47,6 +49,11 @@ public class BrandServiceImpl implements BrandService {
     public Long delete(Long id) {
         brandRepository.deleteById(id);
         return id;
+    }
+
+    @Override
+    public Page<Brand> getAllPaged(Pageable pageable) {
+        return brandRepository.findAll(pageable);
     }
 
 }

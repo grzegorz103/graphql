@@ -1,6 +1,8 @@
 package com.system.car.services;
 
 import com.system.car.models.Brand;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 
@@ -15,4 +17,6 @@ public interface BrandService {
     Brand update(Long id, String name);
 
     Long delete(Long id);
+
+    Page<Brand> getAllPaged(Pageable pageable);
 }
