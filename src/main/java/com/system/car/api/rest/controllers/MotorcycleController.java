@@ -10,7 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/motorcycles")
+@RequestMapping("/api/v1/motorcycles")
 public class MotorcycleController {
 
     private final MotorcycleService motorcycleService;

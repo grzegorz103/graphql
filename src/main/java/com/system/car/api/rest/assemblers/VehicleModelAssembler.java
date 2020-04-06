@@ -9,6 +9,7 @@ import com.system.car.models.Car;
 import com.system.car.models.Vehicle;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.server.mvc.RepresentationModelAssemblerSupport;
 import org.springframework.stereotype.Component;
 
@@ -43,4 +44,14 @@ public class VehicleModelAssembler extends RepresentationModelAssemblerSupport<V
         return vehicleModel;
     }
 
+    @NotNull
+    @Override
+    public CollectionModel<VehicleModel> toCollectionModel(@NotNull Iterable<? extends Vehicle> entities) {
+        CollectionModel<VehicleModel> vehicleModels = super.toCollectionModel(entities);
+        vehicleModels.add(
+                linkTo(methodOn(VehicleController.class).getAll()).withSelfRel()
+        );
+
+        return vehicleModels;
+    }
 }
