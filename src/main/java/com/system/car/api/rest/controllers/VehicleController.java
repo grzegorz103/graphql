@@ -22,17 +22,19 @@ public class VehicleController {
 
     private final VehicleModelAssembler vehicleModelAssembler;
 
-    @Autowired
-    private PagedResourcesAssembler<Vehicle> pagedResourcesAssembler;
+    private final PagedResourcesAssembler<Vehicle> pagedResourcesAssembler;
 
-    public VehicleController(VehicleService vehicleService, VehicleModelAssembler vehicleModelAssembler) {
+    public VehicleController(VehicleService vehicleService,
+                             VehicleModelAssembler vehicleModelAssembler,
+                             PagedResourcesAssembler<Vehicle> pagedResourcesAssembler) {
         this.vehicleService = vehicleService;
         this.vehicleModelAssembler = vehicleModelAssembler;
+        this.pagedResourcesAssembler = pagedResourcesAssembler;
     }
 
     @GetMapping
     public CollectionModel<VehicleModel> getAll(Pageable pageable) {
-    return pagedResourcesAssembler.toModel(vehicleService.getAllPaged(pageable), vehicleModelAssembler);
+        return pagedResourcesAssembler.toModel(vehicleService.getAllPaged(pageable), vehicleModelAssembler);
     }
 
     @GetMapping("/{id}")
