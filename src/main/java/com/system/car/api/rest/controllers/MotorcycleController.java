@@ -2,9 +2,13 @@ package com.system.car.api.rest.controllers;
 
 import com.system.car.api.rest.assemblers.MotorcycleModelAssembler;
 import com.system.car.api.rest.resources.MotorcycleModel;
+import com.system.car.models.Brand;
 import com.system.car.models.Motorcycle;
 import com.system.car.services.MotorcycleService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PagedResourcesAssembler;
 import org.springframework.hateoas.CollectionModel;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -15,11 +19,16 @@ public class MotorcycleController {
 
     private final MotorcycleService motorcycleService;
 
-    @Autowired
-    private MotorcycleModelAssembler motorcycleModelAssembler;
+    private final MotorcycleModelAssembler motorcycleModelAssembler;
 
-    public MotorcycleController(MotorcycleService motorcycleService) {
+    private final PagedResourcesAssembler<Motorcycle> pagedResourcesAssembler;
+
+    public MotorcycleController(MotorcycleService motorcycleService,
+                                MotorcycleModelAssembler motorcycleModelAssembler,
+                                PagedResourcesAssembler<Motorcycle> pagedResourcesAssembler) {
         this.motorcycleService = motorcycleService;
+        this.motorcycleModelAssembler = motorcycleModelAssembler;
+        this.pagedResourcesAssembler = pagedResourcesAssembler;
     }
 
     @GetMapping("/{id}")
@@ -28,8 +37,8 @@ public class MotorcycleController {
     }
 
     @GetMapping
-    public CollectionModel<MotorcycleModel> getAll() {
-        return motorcycleModelAssembler.toCollectionModel(motorcycleService.getAll());
+    public CollectionModel<MotorcycleModel> getAll(Pageable pageable) {
+        return pagedResourcesAssembler.toModel(motorcycleService.getAllPaged(pageable), motorcycleModelAssembler);
     }
 
     @PostMapping
