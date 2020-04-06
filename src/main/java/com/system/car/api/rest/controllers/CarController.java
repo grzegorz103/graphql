@@ -1,4 +1,4 @@
-package com.system.car.api.rest;
+package com.system.car.api.rest.controllers;
 
 import com.system.car.api.rest.assemblers.CarModelAssembler;
 import com.system.car.api.rest.resources.CarModel;
@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 
 @RestController
-@RequestMapping(value = "/api/cars", produces = {"application/hal+json"})
+@RequestMapping(value = "/api/v1/cars", produces = {"application/hal+json"})
 public class CarController {
 
     private final CarService carService;

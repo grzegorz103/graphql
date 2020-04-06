@@ -1,4 +1,4 @@
-package com.system.car.api.rest;
+package com.system.car.api.rest.controllers;
 
 import com.system.car.api.rest.assemblers.BrandModelAssembler;
 import com.system.car.api.rest.resources.BrandModel;
@@ -9,7 +9,7 @@ import org.springframework.hateoas.CollectionModel;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/brands")
+@RequestMapping("/api/v1/brands")
 public class BrandController {
 
     private final BrandService brandService;
