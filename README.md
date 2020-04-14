@@ -4,7 +4,7 @@ GraphQL API integrated with Spring Boot and PostgreSQL database
 
 ## Technology stack
 
-- Spring Boot, GraphQL/REST, HATEAOS, Data JPA
+- Spring Boot, GraphQL/REST, HATEAOS, Data JPA, Cache
 - Hibernate
 - PostgreSQL
 - JUnit & Mockito
