@@ -31,4 +31,9 @@ public class VehicleServiceImpl implements VehicleService {
     public Page<Vehicle> getAllPaged(Pageable pageable) {
         return vehicleRepository.findAll(pageable);
     }
+
+    @Override
+    public Page<Vehicle> getVehiclesByBrandId(Long id, Pageable pageable) {
+        return vehicleRepository.findAllByBrandId(id, pageable);
+    }
 }

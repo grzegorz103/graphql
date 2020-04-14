@@ -13,4 +13,6 @@ public interface VehicleService {
     Vehicle getById(Long id);
 
     Page<Vehicle> getAllPaged(Pageable pageable);
+
+    Page<Vehicle> getVehiclesByBrandId(Long id, Pageable pageable);
 }
