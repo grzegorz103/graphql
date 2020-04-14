@@ -4,6 +4,7 @@ import com.system.car.dao.CarRepository;
 import com.system.car.models.Car;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -65,6 +66,7 @@ public class CarServiceImpl implements CarService {
     }
 
     @Override
+    @Cacheable(cacheNames = "cars")
     public Page<Car> getCarsPaged(Pageable pageable) {
         return carRepository.findAll(pageable);
     }
