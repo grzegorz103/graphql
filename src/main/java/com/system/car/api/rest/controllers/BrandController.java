@@ -1,11 +1,13 @@
 package com.system.car.api.rest.controllers;
 
 import com.system.car.api.rest.assemblers.BrandModelAssembler;
+import com.system.car.api.rest.assemblers.VehicleModelAssembler;
 import com.system.car.api.rest.resources.BrandModel;
 import com.system.car.api.rest.resources.VehicleModel;
 import com.system.car.models.Brand;
-import com.system.car.models.Car;
+import com.system.car.models.Vehicle;
 import com.system.car.services.BrandService;
+import com.system.car.services.VehicleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PagedResourcesAssembler;
@@ -22,12 +24,24 @@ public class BrandController {
 
     private final PagedResourcesAssembler<Brand> pagedResourcesAssembler;
 
+    private final VehicleModelAssembler vehicleModelAssembler;
+
+    private final PagedResourcesAssembler<Vehicle> vehiclePagedResourcesAssembler;
+
+    private final VehicleService vehicleService;
+
     public BrandController(BrandService brandService,
                            BrandModelAssembler brandModelAssembler,
-                           PagedResourcesAssembler<Brand> pagedResourcesAssembler) {
+                           PagedResourcesAssembler<Brand> pagedResourcesAssembler,
+                           VehicleModelAssembler vehicleModelAssembler,
+                           PagedResourcesAssembler<Vehicle> vehiclePagedResourcesAssembler,
+                           VehicleService vehicleService) {
         this.brandService = brandService;
         this.brandModelAssembler = brandModelAssembler;
         this.pagedResourcesAssembler = pagedResourcesAssembler;
+        this.vehicleModelAssembler = vehicleModelAssembler;
+        this.vehiclePagedResourcesAssembler = vehiclePagedResourcesAssembler;
+        this.vehicleService = vehicleService;
     }
 
     @GetMapping("/{id}")
@@ -46,8 +60,9 @@ public class BrandController {
     }
 
     @GetMapping("/{id}/vehicles")
-    public CollectionModel<VehicleModel> getVehiclesByBrandId(@PathVariable("id") Long id) {
-        return null;
+    public CollectionModel<VehicleModel> getVehiclesByBrandId(@PathVariable("id") Long id,
+                                                              Pageable pageable) {
+        return vehiclePagedResourcesAssembler.toModel(vehicleService.getVehiclesByBrandId(id, pageable), vehicleModelAssembler);
     }
 
 }

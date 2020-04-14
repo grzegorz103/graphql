@@ -5,6 +5,7 @@ import com.system.car.api.rest.mappers.BrandModelMapper;
 import com.system.car.api.rest.resources.BrandModel;
 import com.system.car.models.Brand;
 import org.jetbrains.annotations.NotNull;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.server.mvc.RepresentationModelAssemblerSupport;
@@ -33,7 +34,7 @@ public class BrandModelAssembler extends RepresentationModelAssemblerSupport<Bra
                                 .getById(entity.getId())
                 ).withSelfRel(),
                 linkTo(
-                        methodOn(BrandController.class).getVehiclesByBrandId(entity.getId())
+                        methodOn(BrandController.class).getVehiclesByBrandId(entity.getId(), PageRequest.of(0, 10))
                 ).withRel("vehicles")
         );
 
