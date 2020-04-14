@@ -4,6 +4,7 @@ import com.system.car.dao.CarRepository;
 import com.system.car.models.Car;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -33,12 +34,14 @@ public class CarServiceImpl implements CarService {
     }
 
     @Override
+    @Cacheable(cacheNames = "cars", key = "#id")
     public Car getCarById(Long id) {
         return carRepository.findById(id).orElseThrow(() -> new RuntimeException("Not found"));
     }
 
     @Override
     @Transactional
+    @CacheEvict(cacheNames = "cars", allEntries = true)
     public Car create(String model, int year, List<String> images, String info, Long brandId) {
         Car car = new Car();
         car.setBrand(brandService.getById(brandId));
@@ -51,6 +54,7 @@ public class CarServiceImpl implements CarService {
 
     @Override
     @Transactional
+    @CacheEvict(cacheNames = "cars", allEntries = true)
     public Car update(Long id, String model, int year, Long brandId) {
         Car car = carRepository.findById(id).get();
         car.setBrand(brandService.getById(brandId));
@@ -60,6 +64,7 @@ public class CarServiceImpl implements CarService {
     }
 
     @Override
+    @CacheEvict(cacheNames = "cars", allEntries = true)
     public Long delete(Long id) {
         carRepository.deleteById(id);
         return id;
