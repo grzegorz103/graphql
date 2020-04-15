@@ -46,13 +46,13 @@ public class CarController {
         return carModelAssembler.toModel(carService.create(car.getModel(), car.getYear(), car.getImages(), car.getInfo(), car.getBrand().getId()));
     }
 
-    @PutMapping("/id")
+    @PutMapping("/{id}")
     public CarModel update(@PathVariable("id") Long id,
                            @RequestBody Car car) {
         return carModelAssembler.toModel(carService.update(id, car.getModel(), car.getYear(), car.getBrand().getId()));
     }
 
-    @DeleteMapping("/id")
+    @DeleteMapping("/{id}")
     public void deleteById(@PathVariable("id") Long id) {
         carService.delete(id);
     }
