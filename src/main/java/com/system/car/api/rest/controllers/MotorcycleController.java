@@ -49,7 +49,7 @@ public class MotorcycleController {
         );
     }
 
-    @PutMapping("/id")
+    @PutMapping("/{id}")
     public MotorcycleModel update(@PathVariable("id") Long id,
                                   @RequestBody Motorcycle motorcycle) {
         return motorcycleModelAssembler.toModel(
@@ -57,7 +57,7 @@ public class MotorcycleController {
         );
     }
 
-    @DeleteMapping("/id")
+    @DeleteMapping("/{id}")
     public void deleteById(@PathVariable("id") Long id) {
         motorcycleService.delete(id);
     }

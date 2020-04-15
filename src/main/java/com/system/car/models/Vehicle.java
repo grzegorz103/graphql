@@ -21,7 +21,7 @@ public abstract class Vehicle{
     private Long id;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JsonManagedReference
+   // @JsonManagedReference
     private Brand brand;
 
     private String model;
