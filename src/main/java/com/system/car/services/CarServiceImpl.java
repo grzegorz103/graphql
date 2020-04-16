@@ -58,7 +58,7 @@ public class CarServiceImpl implements CarService {
     @Transactional
     @CacheEvict(cacheNames = "cars", allEntries = true)
     public Car update(Long id, String model, int year, Long brandId) {
-        Car car = carRepository.findById(id).get();
+        Car car = carRepository.findById(id).orElseThrow(() -> ExceptionFactory.create(ExceptionType.HTTP_NOT_FOUND));
         car.setBrand(brandService.getById(brandId));
         car.setModel(model);
         car.setYear(year);
