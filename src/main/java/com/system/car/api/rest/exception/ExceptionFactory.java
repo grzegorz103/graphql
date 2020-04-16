@@ -14,4 +14,9 @@ public class ExceptionFactory {
         return new ApplicationException(exceptionType, cause, messageArguments);
     }
 
+    public static ApplicationException create(final ExceptionType exceptionType, final Object... messageArguments) {
+        log.error(MessageFormat.format(exceptionType.getMessage(), messageArguments));
+        return new ApplicationException(exceptionType, messageArguments);
+    }
+
 }

@@ -1,5 +1,7 @@
 package com.system.car.services;
 
+import com.system.car.api.rest.exception.ExceptionFactory;
+import com.system.car.api.rest.exception.ExceptionType;
 import com.system.car.dao.CarRepository;
 import com.system.car.models.Car;
 import org.apache.commons.lang3.StringUtils;
@@ -36,7 +38,7 @@ public class CarServiceImpl implements CarService {
     @Override
     @Cacheable(cacheNames = "cars", key = "#id")
     public Car getCarById(Long id) {
-        return carRepository.findById(id).orElseThrow(() -> new RuntimeException("Not found"));
+        return carRepository.findById(id).orElseThrow(() -> ExceptionFactory.create(ExceptionType.HTTP_NOT_FOUND));
     }
 
     @Override
