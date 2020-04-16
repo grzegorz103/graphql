@@ -15,7 +15,7 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
     public ResponseEntity<Object> handleEntityNotFoundException(ApplicationException exception,
                                                                 WebRequest webRequest) {
         logger.info(exception.getMessage());
-        return super.handleExceptionInternal(exception, exception.getExceptionType(), null, exception.getExceptionType().getStatus(), webRequest);
+        return super.handleExceptionInternal(exception, exception.getMessage(), null, exception.getExceptionType().getStatus(), webRequest);
     }
 
 }
