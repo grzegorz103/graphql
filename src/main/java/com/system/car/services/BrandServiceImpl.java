@@ -1,5 +1,7 @@
 package com.system.car.services;
 
+import com.system.car.api.rest.exception.ExceptionFactory;
+import com.system.car.api.rest.exception.ExceptionType;
 import com.system.car.dao.BrandRepository;
 import com.system.car.models.Brand;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +29,8 @@ public class BrandServiceImpl implements BrandService {
 
     @Override
     public Brand getById(Long id) {
-        return brandRepository.findById(id).orElse(null);
+        return brandRepository.findById(id)
+                .orElseThrow(() -> ExceptionFactory.create(ExceptionType.HTTP_NOT_FOUND, Brand.class.getSimpleName(), id));
     }
 
     @Override
@@ -40,13 +43,17 @@ public class BrandServiceImpl implements BrandService {
 
     @Override
     public Brand update(Long id, String name) {
-        Brand brand = brandRepository.findById(id).get();
+        Brand brand = brandRepository.findById(id)
+                .orElseThrow(() -> ExceptionFactory.create(ExceptionType.HTTP_NOT_FOUND, Brand.class.getSimpleName(), id));
         brand.setName(name);
         return brandRepository.save(brand);
     }
 
     @Override
     public Long delete(Long id) {
+        if (!brandRepository.existsById(id))
+            throw ExceptionFactory.create(ExceptionType.HTTP_NOT_FOUND, Brand.class.getSimpleName(), id);
+
         brandRepository.deleteById(id);
         return id;
     }

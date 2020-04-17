@@ -7,7 +7,7 @@ import org.springframework.http.HttpStatus;
 public enum ExceptionType {
 
     HTTP_INTERNAL_SERVER_ERROR(HttpStatus.INTERNAL_SERVER_ERROR, "An internal server error occurred."),
-    HTTP_NOT_FOUND(HttpStatus.NOT_FOUND, "Not found");
+    HTTP_NOT_FOUND(HttpStatus.NOT_FOUND, "Entity {0} (ID {1}) not found");
 
     private HttpStatus status;
     private String message;

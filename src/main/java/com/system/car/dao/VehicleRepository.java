@@ -19,9 +19,9 @@ public interface VehicleRepository extends JpaRepository<Vehicle, Long> {
     List<Vehicle> findAllSorted();
 
     @Query("SELECT v FROM Vehicle v " +
-            "WHERE v.brand.id = :brandId "+
-            "ORDER BY "+
-    "CASE WHEN v.brand IS NULL THEN 1 ELSE 0 END," +
+            "WHERE v.brand.id = :brandId " +
+            "ORDER BY " +
+            "CASE WHEN v.brand IS NULL THEN 1 ELSE 0 END," +
             "v.year")
     Page<Vehicle> findAllByBrandId(Long brandId, Pageable pageable);
 }
