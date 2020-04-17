@@ -1,5 +1,7 @@
 package com.system.car.services;
 
+import com.system.car.api.rest.exception.ExceptionFactory;
+import com.system.car.api.rest.exception.ExceptionType;
 import com.system.car.dao.MotorcycleRepository;
 import com.system.car.models.Motorcycle;
 import org.apache.commons.lang3.StringUtils;
@@ -42,7 +44,8 @@ public class MotorcycleServiceImpl implements MotorcycleService {
 
     @Override
     public Motorcycle update(Long id, String model, int year, Long brandId) {
-        Motorcycle motorcycle = motorcycleRepository.findById(id).orElseThrow(() -> new RuntimeException("Not found"));
+        Motorcycle motorcycle = motorcycleRepository.findById(id)
+                .orElseThrow(() -> ExceptionFactory.create(ExceptionType.HTTP_NOT_FOUND, Motorcycle.class.getSimpleName(), id));
         motorcycle.setYear(year);
         motorcycle.setModel(model);
         motorcycle.setBrand(brandService.getById(brandId));
@@ -56,13 +59,14 @@ public class MotorcycleServiceImpl implements MotorcycleService {
             motorcycleRepository.deleteById(id);
             return id;
         } else {
-            throw new RuntimeException("Not found");
+            throw ExceptionFactory.create(ExceptionType.HTTP_NOT_FOUND, Motorcycle.class.getSimpleName(), id);
         }
     }
 
     @Override
     public Motorcycle getById(Long id) {
-        return motorcycleRepository.findById(id).orElseThrow(() -> new RuntimeException("Not found"));
+        return motorcycleRepository.findById(id)
+                .orElseThrow(() -> ExceptionFactory.create(ExceptionType.HTTP_NOT_FOUND, Motorcycle.class.getSimpleName(), id));
     }
 
     @Override

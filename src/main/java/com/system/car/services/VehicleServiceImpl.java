@@ -1,5 +1,7 @@
 package com.system.car.services;
 
+import com.system.car.api.rest.exception.ExceptionFactory;
+import com.system.car.api.rest.exception.ExceptionType;
 import com.system.car.dao.VehicleRepository;
 import com.system.car.models.Vehicle;
 import org.springframework.data.domain.Page;
@@ -24,7 +26,8 @@ public class VehicleServiceImpl implements VehicleService {
 
     @Override
     public Vehicle getById(Long id) {
-        return vehicleRepository.findById(id).orElseThrow(() -> new RuntimeException("Not found"));
+        return vehicleRepository.findById(id)
+                .orElseThrow(() -> ExceptionFactory.create(ExceptionType.HTTP_NOT_FOUND, Vehicle.class.getSimpleName(), id));
     }
 
     @Override
