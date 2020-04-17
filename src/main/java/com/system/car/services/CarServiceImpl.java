@@ -38,7 +38,8 @@ public class CarServiceImpl implements CarService {
     @Override
     @Cacheable(cacheNames = "cars", key = "#id")
     public Car getCarById(Long id) {
-        return carRepository.findById(id).orElseThrow(() -> ExceptionFactory.create(ExceptionType.HTTP_NOT_FOUND));
+        return carRepository.findById(id)
+                .orElseThrow(() -> ExceptionFactory.create(ExceptionType.HTTP_NOT_FOUND, Car.class.getSimpleName(), id));
     }
 
     @Override
