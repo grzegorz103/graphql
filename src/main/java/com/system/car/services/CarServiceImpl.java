@@ -58,7 +58,8 @@ public class CarServiceImpl implements CarService {
     @Transactional
     @CacheEvict(cacheNames = "cars", allEntries = true)
     public Car update(Long id, String model, int year, Long brandId) {
-        Car car = carRepository.findById(id).orElseThrow(() -> ExceptionFactory.create(ExceptionType.HTTP_NOT_FOUND));
+        Car car = carRepository.findById(id)
+                .orElseThrow(() -> ExceptionFactory.create(ExceptionType.HTTP_NOT_FOUND, Car.class.getSimpleName(), id));
         car.setBrand(brandService.getById(brandId));
         car.setModel(model);
         car.setYear(year);
@@ -68,6 +69,9 @@ public class CarServiceImpl implements CarService {
     @Override
     @CacheEvict(cacheNames = "cars", allEntries = true)
     public Long delete(Long id) {
+        if (!carRepository.existsById(id))
+            throw ExceptionFactory.create(ExceptionType.HTTP_NOT_FOUND, Car.class.getSimpleName(), id);
+
         carRepository.deleteById(id);
         return id;
     }
