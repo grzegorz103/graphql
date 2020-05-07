@@ -8,14 +8,15 @@ import com.system.car.models.Brand;
 import com.system.car.models.Vehicle;
 import com.system.car.services.BrandService;
 import com.system.car.services.VehicleService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PagedResourcesAssembler;
 import org.springframework.hateoas.CollectionModel;
 import org.springframework.web.bind.annotation.*;
 
+import static com.system.car.api.rest.utils.Constants.API_VERSION;
+
 @RestController
-@RequestMapping("/api/v1/brands")
+@RequestMapping(API_VERSION + "brands")
 public class BrandController {
 
     private final BrandService brandService;

@@ -13,8 +13,10 @@ import org.springframework.hateoas.CollectionModel;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import static com.system.car.api.rest.utils.Constants.API_VERSION;
+
 @RestController
-@RequestMapping("/api/v1/motorcycles")
+@RequestMapping(API_VERSION + "motorcycles")
 public class MotorcycleController {
 
     private final MotorcycleService motorcycleService;
