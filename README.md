@@ -38,7 +38,7 @@ $ npm install -g @angular/cli
 ### Deployment
 
 ```
-$ `mvn spring-boot:run -Drun.profiles=dev`
+$ mvn spring-boot:run -Drun.profiles=dev
 $ cd front
 $ npm install
 $ ng serve
