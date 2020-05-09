@@ -14,8 +14,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import static com.system.car.api.rest.utils.Constants.API_VERSION;
+
 @RestController
-@RequestMapping("/api/v1/vehicles")
+@RequestMapping(API_VERSION + "vehicles")
 public class VehicleController {
 
     private final VehicleService vehicleService;

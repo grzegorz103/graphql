@@ -11,9 +11,10 @@ import org.springframework.hateoas.CollectionModel;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import static com.system.car.api.rest.utils.Constants.API_VERSION;
 
 @RestController
-@RequestMapping(value = "/api/v1/cars", produces = {"application/hal+json"})
+@RequestMapping(value = API_VERSION + "cars", produces = {"application/hal+json"})
 public class CarController {
 
     private final CarService carService;
@@ -45,7 +46,7 @@ public class CarController {
     public CarModel create(@RequestBody Car car) {
         System.out.println(car.getId());
         Car car1 = carService.create(car.getModel(), car.getYear(), car.getImages(), car.getInfo(), car.getBrand().getId());
-        System.out.println(car1== null);
+        System.out.println(car1 == null);
         return carModelAssembler.toModel(car1);
     }
 
