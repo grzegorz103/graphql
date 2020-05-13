@@ -14,6 +14,14 @@
 
 </div>
 
-<div *ngIf="!vehicles">
-  <mat-spinner></mat-spinner>
+
+<div class="container">
+  <div class="row">
+
+    <div *ngIf="!vehicles" class="mx-auto">
+      <mat-spinner class="mx-auto"></mat-spinner>
+      <h3><i>Uruchamianie serwera...</i></h3>
+    </div>
+
+  </div>
 </div>
