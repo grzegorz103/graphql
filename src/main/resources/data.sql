@@ -14,15 +14,15 @@ INSERT INTO public.vehicle (dtype, id, model, year, brand_id, info) VALUES ('Car
 ');
 INSERT INTO public.vehicle (dtype, id, model, year, brand_id, info) VALUES ('Motorcycle', 40, 'Hayabusa', 2010, 45, 'Suzuki GSX 1300R Hayabusa – sportowo-turystyczny motocykl firmy Suzuki, wprowadzony na rynek w roku 1999. Nazwa „Hayabusa” pochodzi od japońskiego określenia najszybszego zwierzęcia świat');
 
-INSERT INTO public.vehicle_images (vehicle_id, images) VALUES (36, '2');
-INSERT INTO public.vehicle_images (vehicle_id, images) VALUES (36, '2');
-INSERT INTO public.vehicle_images (vehicle_id, images) VALUES (36, '2');
-INSERT INTO public.vehicle_images (vehicle_id, images) VALUES (38, 'https://helpx.adobe.com/content/dam/help/en/stock/how-to/visual-reverse-image-search/jcr_content/main-pars/image/visual-reverse-image-search-v2_intro.jpg');
-INSERT INTO public.vehicle_images (vehicle_id, images) VALUES (38, 'https://helpx.adobe.com/content/dam/help/en/stock/how-to/visual-reverse-image-search/jcr_content/main-pars/image/visual-reverse-image-search-v2_intro.jpg');
-INSERT INTO public.vehicle_images (vehicle_id, images) VALUES (38, 'https://helpx.adobe.com/content/dam/help/en/stock/how-to/visual-reverse-image-search/jcr_content/main-pars/image/visual-reverse-image-search-v2_intro.jpg');
-INSERT INTO public.vehicle_images (vehicle_id, images) VALUES (39, 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSdxh-WnDLiwyUtQ93INH1LZ1otGzF19sfhKsBwbA_vfxpKc103');
-INSERT INTO public.vehicle_images (vehicle_id, images) VALUES (39, 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSdxh-WnDLiwyUtQ93INH1LZ1otGzF19sfhKsBwbA_vfxpKc103');
-INSERT INTO public.vehicle_images (vehicle_id, images) VALUES (39, 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSdxh-WnDLiwyUtQ93INH1LZ1otGzF19sfhKsBwbA_vfxpKc103');
-INSERT INTO public.vehicle_images (vehicle_id, images) VALUES (40, 'https://media.gettyimages.com/photos/paint-explosion-picture-id170955250?s=2048x2048');
-INSERT INTO public.vehicle_images (vehicle_id, images) VALUES (40, 'https://media.gettyimages.com/photos/paint-explosion-picture-id170955250?s=2048x2048');
-INSERT INTO public.vehicle_images (vehicle_id, images) VALUES (40, 'https://media.gettyimages.com/photos/paint-explosion-picture-id170955250?s=2048x2048');
+INSERT INTO public.vehicle_images (vehicle_id, images) VALUES (36, 'https://image.ceneostatic.pl/data/products/69805532/i-bmw-seria-3-e36-1995-km-coupe-czarny.jpg');
+INSERT INTO public.vehicle_images (vehicle_id, images) VALUES (36, 'https://d-gr.ppstatic.pl/kadry/k/r/gr-ogl/88/4b/224538_180626616_bmw-seria-3-iii-e36-coupe_xlarge.jpg');
+INSERT INTO public.vehicle_images (vehicle_id, images) VALUES (36, 'https://d-gr.ppstatic.pl/kadry/k/r/gr-ogl/88/4b/224538_180626660_bmw-seria-3-iii-e36-coupe_xlarge.jpg');
+INSERT INTO public.vehicle_images (vehicle_id, images) VALUES (38, 'https://d-mf.ppstatic.pl/art/au/bv/kgm8wiwo0s44ks4g0cogk/golf-1.1200.jpg');
+INSERT INTO public.vehicle_images (vehicle_id, images) VALUES (38, 'https://motopodprad.pl/wp-content/uploads/2017/12/7.jpg');
+INSERT INTO public.vehicle_images (vehicle_id, images) VALUES (38, 'https://i.wpimg.pl/730x0/m.autokult.pl/golf-6-59706b3a939920001-7755b12.jpg');
+INSERT INTO public.vehicle_images (vehicle_id, images) VALUES (39, 'https://image.ceneostatic.pl/data/products/88341530/i-porsche-panamera-gts-4-8-v8-najlepszy-silnik.jpg');
+INSERT INTO public.vehicle_images (vehicle_id, images) VALUES (39, 'https://img.tipcars.com/fotky_velke/38091412_4/1524487570/E/porsche-panamera-4s-4-8-v8-pasm-chronopaket.jpg');
+INSERT INTO public.vehicle_images (vehicle_id, images) VALUES (39, 'https://image.ceneostatic.pl/data/products/78684599/i-porsche-panamera-turbo-4-0-led.jpg');
+INSERT INTO public.vehicle_images (vehicle_id, images) VALUES (40, 'https://a.allegroimg.com/s512/03273f/6e22a9e441aab5ae27f822d2dd6e/Suzuki-Hayabusa-GSX-1300-R');
+INSERT INTO public.vehicle_images (vehicle_id, images) VALUES (40, 'https://motogen.pl/wp-content/uploads/2019/12/2019-suzuki-hayabusa-gsx-1300r-autoby-03.jpg');
+INSERT INTO public.vehicle_images (vehicle_id, images) VALUES (40, 'https://www.jednoslad.pl/wp-content/uploads/2016/006/4465-h1.jpg');
