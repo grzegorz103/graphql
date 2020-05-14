@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,6 +35,7 @@ public class BrandServiceImpl implements BrandService {
     }
 
     @Override
+    @Transactional
     public Brand create(String name) {
         Brand brand = new Brand();
         brand.setName(name);
@@ -42,6 +44,7 @@ public class BrandServiceImpl implements BrandService {
     }
 
     @Override
+    @Transactional
     public Brand update(Long id, String name) {
         Brand brand = brandRepository.findById(id)
                 .orElseThrow(() -> ExceptionFactory.create(ExceptionType.HTTP_NOT_FOUND, Brand.class.getSimpleName(), id));
@@ -50,6 +53,7 @@ public class BrandServiceImpl implements BrandService {
     }
 
     @Override
+    @Transactional
     public Long delete(Long id) {
         if (!brandRepository.existsById(id))
             throw ExceptionFactory.create(ExceptionType.HTTP_NOT_FOUND, Brand.class.getSimpleName(), id);

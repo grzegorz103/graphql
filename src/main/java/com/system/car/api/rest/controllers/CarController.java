@@ -44,9 +44,7 @@ public class CarController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public CarModel create(@RequestBody Car car) {
-        System.out.println(car.getId());
         Car car1 = carService.create(car.getModel(), car.getYear(), car.getImages(), car.getInfo(), car.getBrand().getId());
-        System.out.println(car1 == null);
         return carModelAssembler.toModel(car1);
     }
 
