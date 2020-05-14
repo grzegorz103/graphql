@@ -4,6 +4,7 @@ import com.system.car.api.rest.exception.ExceptionFactory;
 import com.system.car.api.rest.exception.ExceptionType;
 import com.system.car.dao.CarRepository;
 import com.system.car.models.Car;
+import com.system.car.services.utils.Constants;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
@@ -37,19 +38,19 @@ public class CarServiceImpl implements CarService {
     }
 
     @Override
-    @Cacheable(cacheNames = "cars", key = "#id")
+    @Cacheable(cacheNames = Constants.CAR_CACHE_NAME, key = "#id")
     public Car getCarById(Long id) {
         return carRepository.findById(id)
                 .orElseThrow(() -> ExceptionFactory.create(ExceptionType.HTTP_NOT_FOUND, Car.class.getSimpleName(), id));
     }
 
     @Override
-    @Transactional
-    @CacheEvict(cacheNames = "cars", allEntries = true)
+    @CacheEvict(cacheNames = Constants.CAR_CACHE_NAME, allEntries = true)
     public Car create(String model, int year, List<String> images, String info, Long brandId) {
         Car car = new Car();
         car.setBrand(brandService.getById(brandId));
         car.setModel(model);
+        System.out.println("CCreate");
         car.setYear(year);
         car.setImages(images.stream().filter(e -> !StringUtils.isBlank(e)).collect(Collectors.toList()));
         car.setInfo(info);
@@ -58,7 +59,7 @@ public class CarServiceImpl implements CarService {
 
     @Override
     @Transactional
-    @CacheEvict(cacheNames = "cars", allEntries = true)
+    @CacheEvict(cacheNames = Constants.CAR_CACHE_NAME, allEntries = true)
     public Car update(Long id, String model, int year, Long brandId) {
         Car car = carRepository.findById(id)
                 .orElseThrow(() -> ExceptionFactory.create(ExceptionType.HTTP_NOT_FOUND, Car.class.getSimpleName(), id));
@@ -69,7 +70,7 @@ public class CarServiceImpl implements CarService {
     }
 
     @Override
-    @CacheEvict(cacheNames = "cars", allEntries = true)
+    @CacheEvict(cacheNames = Constants.CAR_CACHE_NAME, allEntries = true)
     public Long delete(Long id) {
         if (!carRepository.existsById(id))
             throw ExceptionFactory.create(ExceptionType.HTTP_NOT_FOUND, Car.class.getSimpleName(), id);
@@ -79,8 +80,9 @@ public class CarServiceImpl implements CarService {
     }
 
     @Override
-    @Cacheable(cacheNames = "cars")
+    @Cacheable(cacheNames = Constants.CAR_CACHE_NAME)
     public Page<Car> getCarsPaged(Pageable pageable) {
+        System.out.println("AAA");
         return carRepository.findAll(pageable);
     }
 }
