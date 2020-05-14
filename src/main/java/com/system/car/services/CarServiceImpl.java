@@ -13,7 +13,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.transaction.support.TransactionSynchronizationManager;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -50,7 +49,6 @@ public class CarServiceImpl implements CarService {
         Car car = new Car();
         car.setBrand(brandService.getById(brandId));
         car.setModel(model);
-        System.out.println("CCreate");
         car.setYear(year);
         car.setImages(images.stream().filter(e -> !StringUtils.isBlank(e)).collect(Collectors.toList()));
         car.setInfo(info);
@@ -82,7 +80,6 @@ public class CarServiceImpl implements CarService {
     @Override
     @Cacheable(cacheNames = Constants.CAR_CACHE_NAME)
     public Page<Car> getCarsPaged(Pageable pageable) {
-        System.out.println("AAA");
         return carRepository.findAll(pageable);
     }
 }
