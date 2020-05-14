@@ -8,6 +8,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -32,6 +33,7 @@ public class MotorcycleServiceImpl implements MotorcycleService {
     }
 
     @Override
+    @Transactional
     public Motorcycle create(String model, int year, List<String> images, String info, Long brandId) {
         Motorcycle motorcycle = new Motorcycle();
         motorcycle.setModel(model);
@@ -43,6 +45,7 @@ public class MotorcycleServiceImpl implements MotorcycleService {
     }
 
     @Override
+    @Transactional
     public Motorcycle update(Long id, String model, int year, Long brandId) {
         Motorcycle motorcycle = motorcycleRepository.findById(id)
                 .orElseThrow(() -> ExceptionFactory.create(ExceptionType.HTTP_NOT_FOUND, Motorcycle.class.getSimpleName(), id));
@@ -54,6 +57,7 @@ public class MotorcycleServiceImpl implements MotorcycleService {
     }
 
     @Override
+    @Transactional
     public Long delete(Long id) {
         if (motorcycleRepository.existsById(id)) {
             motorcycleRepository.deleteById(id);
