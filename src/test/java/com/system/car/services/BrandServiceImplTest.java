@@ -60,6 +60,7 @@ public class BrandServiceImplTest {
     @Test
     public void deleteTest(){
         Brand mocked = mock(Brand.class);
+        when(brandRepository.existsById(anyLong())).thenReturn(true);
         assertThat(brandService.delete(mocked.getId())).isEqualTo(mocked.getId());
         verify(brandRepository, times(1)).deleteById(mocked.getId());
     }
