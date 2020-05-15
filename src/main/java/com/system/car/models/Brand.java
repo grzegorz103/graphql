@@ -4,8 +4,11 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Entity
@@ -23,5 +26,8 @@ public class Brand {
     @JsonBackReference
     public List<Vehicle> vehicles;
 
+    @NotBlank
+    @NotNull
+    @Length(max = 250)
     private String name;
 }
