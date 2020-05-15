@@ -120,41 +120,58 @@
 
         <div class="form-group" class="col-md-4">
           <label class="col-md-4 control-label">Marka</label>
-          <select class="browser-default custom-select" [(ngModel)]="motorcycle.brand">
+          <select class="browser-default custom-select" [(ngModel)]="motorcycle.brand" required #motorBrand="ngModel" name="motorBrand">
             <option *ngFor="let brand of brands" [ngValue]="brand">{{ brand.name }}</option>
           </select>
+        </div>
+        <div *ngIf="e.submitted && motorBrand.invalid">
+          <div style="color: red">Wartość jest wymagana</div>
         </div>
 
         <div class="form-group">
           <label class="col-md-4 control-label" for="carInput">Nazwa modelu</label>
           <div class="col-md-4">
-            <input id="carInput" name="textinput" type="text" placeholder="" [(ngModel)]="motorcycle.model"
+            <input id="carInput" name="textinput" type="text" placeholder="" [(ngModel)]="motorcycle.model" #motorModel="ngModel" name="motorModel"
                    class="form-control input-md" required="">
 
           </div>
         </div>
+        <div *ngIf="e.submitted && motorModel.invalid">
+          <div style="color: red">Wartość jest wymagana</div>
+        </div>
+
         <div class="form-group">
           <label class="col-md-4 control-label" for="carInputYear">Rok</label>
           <div class="col-md-4">
-            <input id="carInputYear" name="textinput" type="text" placeholder="" [(ngModel)]="motorcycle.year"
+            <input id="carInputYear" name="textinput" type="number" placeholder="Np '2001'" [(ngModel)]="motorcycle.year" #motorYear="ngModel"
                    class="form-control input-md" required="">
           </div>
+        </div>
+        <div *ngIf="e.submitted && motorYear.invalid">
+          <div style="color: red">Wartość jest wymagana</div>
         </div>
 
         <div class="form-group" *ngFor="let image of motorcycle.images; let i = index;trackBy:trackByIndex;">
           <label class="col-md-4 control-label" for="carInputYear">Zdjęcie {{ i + 1 }}</label>
           <div class="col-md-4">
-            <input type="text" placeholder="" [(ngModel)]="motorcycle.images[i]" name="a--{{i}}"
-                   class="form-control input-md" required="">
+            <input type="text" placeholder="" [(ngModel)]="motorcycle.images[i]" name="a--{{i}}" #motorImage="ngModel"
+                   class="form-control input-md" required>
+            <div *ngIf="e.submitted && motorImage.invalid">
+              <div style="color: red">Wartość jest wymagana</div>
+            </div>
           </div>
         </div>
+
 
         <div class="form-group">
           <label class="col-md-4 control-label" for="carInputYear">Opis</label>
           <div class="col-md-4">
-        <textarea type="text" placeholder="" [(ngModel)]="motorcycle.info"
+        <textarea type="text" placeholder="" [(ngModel)]="motorcycle.info" #motorInfo="ngModel" name="motorInfo"
                   class="form-control input-md" required=""></textarea>
           </div>
+        </div>
+        <div *ngIf="e.submitted && motorInfo.invalid">
+          <div style="color: red">Wartość jest wymagana</div>
         </div>
 
         <!-- Button -->
