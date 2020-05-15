@@ -113,6 +113,8 @@
         </tr>
         </tbody>
       </table>
+
+      <form (ngSubmit)="e.form.valid && createMotorcycle()" #e="ngForm" novalidate>
       <fieldset>
         <legend>Dodawanie nowego motocykla</legend>
 
@@ -159,12 +161,13 @@
         <div class="form-group">
           <label class="col-md-4 control-label" for="carAddButton"></label>
           <div class="col-md-4">
-            <button id="carAddButton" name="addButton" class="btn btn-success" (click)="createMotorcycle()">Dodaj
+            <button id="carAddButton" name="addButton" class="btn btn-success">Dodaj
             </button>
           </div>
         </div>
 
       </fieldset>
+      </form>
     </div>
   </mat-tab>
   <mat-tab label="Nowa marka">
@@ -196,22 +199,26 @@
       <legend>Dodawanie nowej marki</legend>
 
       <!-- Text input-->
-      <div class="form-group">
-        <label class="col-md-4 control-label" for="textinput">Nazwa marki</label>
-        <div class="col-md-4">
-          <input id="textinput" name="textinput" type="text" placeholder="" [(ngModel)]="brand.name"
-                 class="form-control input-md" required="">
+      <form (ngSubmit)="f.form.valid && createBrand()" #f="ngForm" novalidate>
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="brandName">Nazwa marki</label>
+          <div class="col-md-4">
+            <input name="brandName" type="text" placeholder="" [(ngModel)]="brand.name" required
+                   class="form-control input-md" #brandName="ngModel" id="brandName">
 
+          </div>
         </div>
-      </div>
-      <!-- Button -->
-      <div class="form-group">
-        <label class="col-md-4 control-label" for="addButton"></label>
-        <div class="col-md-4">
-          <button id="addButton" name="addButton" class="btn btn-success" (click)="createBrand()">Dodaj</button>
+        <div *ngIf="f.submitted && brandName.invalid">
+          <div style="color: red">Wartość jest wymagana</div>
         </div>
-      </div>
-
+        <!-- Button -->
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="addButton"></label>
+          <div class="col-md-4">
+            <button id="addButton" name="addButton" class="btn btn-success" type="submit">Dodaj</button>
+          </div>
+        </div>
+      </form>
     </fieldset>
   </mat-tab>
 </mat-tab-group>
