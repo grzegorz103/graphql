@@ -2,6 +2,7 @@ package com.system.car.api.rest.controllers;
 
 import com.system.car.api.rest.assemblers.BrandModelAssembler;
 import com.system.car.api.rest.assemblers.VehicleModelAssembler;
+import com.system.car.api.rest.dto.in.BrandIn;
 import com.system.car.api.rest.resources.BrandModel;
 import com.system.car.api.rest.resources.VehicleModel;
 import com.system.car.models.Brand;
@@ -58,8 +59,8 @@ public class BrandController {
     }
 
     @PostMapping
-    public BrandModel create(@RequestBody @Valid Brand brand) {
-        return brandModelAssembler.toModel(brandService.create(brand.getName()));
+    public BrandModel create(@RequestBody @Valid BrandIn brandIn) {
+        return brandModelAssembler.toModel(brandService.create(brandIn.getName()));
     }
 
     @GetMapping("/{id}/vehicles")
