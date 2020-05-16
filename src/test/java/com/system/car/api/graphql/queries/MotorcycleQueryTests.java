@@ -1,7 +1,7 @@
 package com.system.car.api.graphql.queries;
 
 import com.system.car.models.Motorcycle;
-import com.system.car.services.MotorcycleService;
+import com.system.car.services.abstr.MotorcycleService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;

@@ -24,7 +24,7 @@ public class Brand {
 
     @OneToMany(mappedBy = "brand", cascade = CascadeType.ALL)
     @JsonBackReference
-    public List<Vehicle> vehicles;
+    private List<Vehicle> vehicles;
 
     @NotBlank
     @NotNull

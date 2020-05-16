@@ -2,6 +2,7 @@ package com.system.car.services;
 
 import com.system.car.dao.BrandRepository;
 import com.system.car.models.Brand;
+import com.system.car.services.impl.BrandServiceImpl;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;

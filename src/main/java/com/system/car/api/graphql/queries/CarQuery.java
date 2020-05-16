@@ -2,7 +2,7 @@ package com.system.car.api.graphql.queries;
 
 import com.coxautodev.graphql.tools.GraphQLQueryResolver;
 import com.system.car.models.Car;
-import com.system.car.services.CarService;
+import com.system.car.services.abstr.CarService;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

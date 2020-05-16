@@ -2,7 +2,7 @@ package com.system.car.api.graphql.mutations;
 
 import com.coxautodev.graphql.tools.GraphQLMutationResolver;
 import com.system.car.models.Motorcycle;
-import com.system.car.services.MotorcycleService;
+import com.system.car.services.abstr.MotorcycleService;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
