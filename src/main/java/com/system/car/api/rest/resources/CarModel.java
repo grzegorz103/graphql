@@ -1,6 +1,5 @@
 package com.system.car.api.rest.resources;
 
-import com.system.car.models.Brand;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;

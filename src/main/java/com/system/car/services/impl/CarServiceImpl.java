@@ -52,7 +52,10 @@ public class CarServiceImpl implements CarService {
         car.setBrand(brandService.getById(brandId));
         car.setModel(model);
         car.setYear(year);
-        car.setImages(images.stream().filter(e -> !StringUtils.isBlank(e)).collect(Collectors.toList()));
+        car.setImages(images.stream()
+                .filter(StringUtils::isNotBlank)
+                .collect(Collectors.toList())
+        );
         car.setInfo(info);
         return carRepository.save(car);
     }

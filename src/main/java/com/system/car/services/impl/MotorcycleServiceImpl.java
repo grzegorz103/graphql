@@ -45,7 +45,9 @@ public class MotorcycleServiceImpl implements MotorcycleService {
         motorcycle.setModel(model);
         motorcycle.setYear(year);
         motorcycle.setInfo(info);
-        motorcycle.setImages(images.stream().filter(e -> !StringUtils.isBlank(e)).collect(Collectors.toList()));
+        motorcycle.setImages(images.stream()
+                .filter(StringUtils::isNotBlank)
+                .collect(Collectors.toList()));
         motorcycle.setBrand(brandService.getById(brandId));
         return motorcycleRepository.save(motorcycle);
     }

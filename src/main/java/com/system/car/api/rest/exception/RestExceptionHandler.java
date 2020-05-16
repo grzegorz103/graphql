@@ -56,7 +56,7 @@ public class RestExceptionHandler {
         List<String> errorSet = exception.getBindingResult()
                 .getFieldErrors()
                 .stream()
-                .map(DefaultMessageSourceResolvable::getDefaultMessage)
+                .map(e->e.getField() + " " + e.getDefaultMessage())
                 .collect(Collectors.toList());
         return new ApiResponse<>(errorSet);
     }
