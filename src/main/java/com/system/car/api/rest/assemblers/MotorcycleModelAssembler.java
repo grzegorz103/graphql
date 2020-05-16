@@ -32,7 +32,7 @@ public class MotorcycleModelAssembler extends RepresentationModelAssemblerSuppor
         MotorcycleModel motorcycleModel = motorcycleModelMapper.toDto(entity);
 
         motorcycleModel.add(
-                linkTo(methodOn(CarController.class)
+                linkTo(methodOn(MotorcycleController.class)
                         .getById(entity.getId())
                 ).withSelfRel()
         );

@@ -1,7 +1,6 @@
 package com.system.car.api.rest.exception;
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
 import lombok.Getter;
 
 import java.text.MessageFormat;

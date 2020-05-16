@@ -8,8 +8,6 @@ import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 
-import static org.hibernate.loader.Loader.SELECT;
-
 public interface VehicleRepository extends JpaRepository<Vehicle, Long> {
 
     @Query("SELECT v FROM Vehicle v " +

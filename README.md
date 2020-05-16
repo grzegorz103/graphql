@@ -38,9 +38,9 @@ $ npm install -g @angular/cli
 ### Deployment
 
 ```
-$ `mvn spring-boot:run -Drun.profiles=dev`
+$ mvn spring-boot:run -Dspring-boot.run.profiles=dev
 $ cd front
 $ npm install
 $ ng serve
 ```
-Run browser and head to ```http://localhost:4200`
+Run browser and head to ```http://localhost:4200```
