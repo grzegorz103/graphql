@@ -13,6 +13,8 @@ import org.springframework.data.web.PagedResourcesAssembler;
 import org.springframework.hateoas.CollectionModel;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 import static com.system.car.api.rest.utils.Constants.API_VERSION;
 
 @RestController
@@ -56,8 +58,8 @@ public class BrandController {
     }
 
     @PostMapping
-    public BrandModel create(@RequestBody String name) {
-        return brandModelAssembler.toModel(brandService.create(name));
+    public BrandModel create(@RequestBody @Valid Brand brand) {
+        return brandModelAssembler.toModel(brandService.create(brand.getName()));
     }
 
     @GetMapping("/{id}/vehicles")
