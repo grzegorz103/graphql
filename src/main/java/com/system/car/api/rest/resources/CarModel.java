@@ -14,8 +14,8 @@ import java.util.List;
 @NoArgsConstructor
 public class CarModel extends VehicleModel {
 
-    public CarModel(BrandModel brand, String model, Integer year, List<String> images, String info) {
-        super(brand, model, year, images, info);
+    public CarModel(String model, Integer year, List<String> images, String info) {
+        super(model, year, images, info);
     }
 
 }

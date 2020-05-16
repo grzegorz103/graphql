@@ -3,6 +3,7 @@ package com.system.car.api.rest.assemblers;
 import com.system.car.api.rest.controllers.BrandController;
 import com.system.car.api.rest.mappers.BrandModelMapper;
 import com.system.car.api.rest.resources.BrandModel;
+import com.system.car.api.rest.utils.Constants;
 import com.system.car.models.Brand;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.data.domain.PageRequest;
@@ -34,8 +35,9 @@ public class BrandModelAssembler extends RepresentationModelAssemblerSupport<Bra
                                 .getById(entity.getId())
                 ).withSelfRel(),
                 linkTo(
-                        methodOn(BrandController.class).getVehiclesByBrandId(entity.getId(), PageRequest.of(0, 10))
-                ).withRel("vehicles")
+                        methodOn(BrandController.class)
+                                .getVehiclesByBrandId(entity.getId(), PageRequest.of(0, 10))
+                ).withRel(Constants.VEHICLES_LINK_NAME)
         );
 
         return brandModel;

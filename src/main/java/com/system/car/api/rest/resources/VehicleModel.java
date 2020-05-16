@@ -15,8 +15,6 @@ import java.util.List;
 @NoArgsConstructor
 public class VehicleModel extends RepresentationModel<VehicleModel> {
 
-    private BrandModel brand;
-
     private String model;
 
     private Integer year;
