@@ -3,7 +3,7 @@ package com.system.car.api.rest.controllers;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.system.car.models.Brand;
 import com.system.car.models.Car;
-import com.system.car.services.CarService;
+import com.system.car.services.abstr.CarService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;

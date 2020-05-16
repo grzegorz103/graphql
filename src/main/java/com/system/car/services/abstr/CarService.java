@@ -1,4 +1,4 @@
-package com.system.car.services;
+package com.system.car.services.abstr;
 
 import com.system.car.models.Car;
 import org.springframework.data.domain.Page;

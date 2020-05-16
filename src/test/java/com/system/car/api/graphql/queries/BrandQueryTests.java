@@ -1,7 +1,7 @@
 package com.system.car.api.graphql.queries;
 
 import com.system.car.models.Brand;
-import com.system.car.services.BrandService;
+import com.system.car.services.abstr.BrandService;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

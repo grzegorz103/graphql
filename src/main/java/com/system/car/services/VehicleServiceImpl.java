@@ -4,6 +4,7 @@ import com.system.car.api.rest.exception.ExceptionFactory;
 import com.system.car.api.rest.exception.ExceptionType;
 import com.system.car.dao.VehicleRepository;
 import com.system.car.models.Vehicle;
+import com.system.car.services.abstr.VehicleService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;

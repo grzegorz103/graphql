@@ -1,11 +1,9 @@
 package com.system.car.api.rest.controllers;
 
 import com.system.car.api.rest.assemblers.VehicleModelAssembler;
-import com.system.car.api.rest.resources.CarModel;
 import com.system.car.api.rest.resources.VehicleModel;
 import com.system.car.models.Vehicle;
-import com.system.car.services.VehicleService;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.system.car.services.abstr.VehicleService;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PagedResourcesAssembler;
 import org.springframework.hateoas.CollectionModel;

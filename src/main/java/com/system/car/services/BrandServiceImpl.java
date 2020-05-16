@@ -4,6 +4,7 @@ import com.system.car.api.rest.exception.ExceptionFactory;
 import com.system.car.api.rest.exception.ExceptionType;
 import com.system.car.dao.BrandRepository;
 import com.system.car.models.Brand;
+import com.system.car.services.abstr.BrandService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
