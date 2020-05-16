@@ -2,6 +2,7 @@ package com.system.car.api.rest.controllers;
 
 import com.system.car.api.rest.assemblers.BrandModelAssembler;
 import com.system.car.api.rest.assemblers.VehicleModelAssembler;
+import com.system.car.api.rest.dto.in.BrandIn;
 import com.system.car.api.rest.resources.BrandModel;
 import com.system.car.api.rest.resources.VehicleModel;
 import com.system.car.models.Brand;
@@ -12,6 +13,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PagedResourcesAssembler;
 import org.springframework.hateoas.CollectionModel;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 import static com.system.car.api.rest.utils.Constants.API_VERSION;
 
@@ -56,8 +59,8 @@ public class BrandController {
     }
 
     @PostMapping
-    public BrandModel create(@RequestBody String name) {
-        return brandModelAssembler.toModel(brandService.create(name));
+    public BrandModel create(@RequestBody @Valid BrandIn brandIn) {
+        return brandModelAssembler.toModel(brandService.create(brandIn.getName()));
     }
 
     @GetMapping("/{id}/vehicles")

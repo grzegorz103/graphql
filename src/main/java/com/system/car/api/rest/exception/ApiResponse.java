@@ -3,6 +3,7 @@ package com.system.car.api.rest.exception;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
 
+import java.util.Collection;
 import java.util.Set;
 
 @Data
@@ -10,9 +11,9 @@ import java.util.Set;
 public class ApiResponse {
 
     private String message;
-    private Set<String> errorMessages;
+    private Collection<String> errorMessages;
 
-    public ApiResponse(Set<String> errorMessages) {
+    public ApiResponse(Collection<String> errorMessages) {
         this.errorMessages = errorMessages;
     }
 

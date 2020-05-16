@@ -1,11 +1,12 @@
 package com.system.car.api.rest.exception;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.context.support.DefaultMessageSourceResolvable;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.TransactionSystemException;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -14,6 +15,7 @@ import org.springframework.web.context.request.WebRequest;
 
 import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
+import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -42,11 +44,24 @@ public class RestExceptionHandler {
         return new ApiResponse(BAD_REQUEST_MESSAGE);
     }
 
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    @ResponseBody
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public ApiResponse handleRestMethodArgumentNotValid(MethodArgumentNotValidException exception) {
+        List<String> errorSet = exception.getBindingResult()
+                .getFieldErrors()
+                .stream()
+                .map(DefaultMessageSourceResolvable::getDefaultMessage)
+                .collect(Collectors.toList());
+        return new ApiResponse(errorSet);
+    }
+
     @ExceptionHandler(ApplicationException.class)
-    public ResponseEntity<Object> handleEntityNotFoundException(ApplicationException exception,
-                                                                WebRequest webRequest) {
-        return ResponseEntity.badRequest()
-                .body(exception.getMessage());
+    @ResponseBody
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public ApiResponse handleEntityNotFoundException(ApplicationException exception,
+                                                     WebRequest webRequest) {
+        return new ApiResponse(exception.getMessage());
     }
 
 }
