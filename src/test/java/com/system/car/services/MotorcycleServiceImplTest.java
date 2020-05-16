@@ -4,6 +4,7 @@ import com.system.car.dao.MotorcycleRepository;
 import com.system.car.models.Brand;
 import com.system.car.models.Motorcycle;
 import com.system.car.services.abstr.BrandService;
+import com.system.car.services.impl.MotorcycleServiceImpl;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
