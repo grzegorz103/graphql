@@ -2,7 +2,7 @@ package com.system.car.api.graphql.queries;
 
 import com.system.car.CarApplication;
 import com.system.car.models.Vehicle;
-import com.system.car.services.VehicleService;
+import com.system.car.services.abstr.VehicleService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

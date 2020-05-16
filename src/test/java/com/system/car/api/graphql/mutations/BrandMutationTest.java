@@ -1,7 +1,7 @@
 package com.system.car.api.graphql.mutations;
 
 import com.system.car.models.Brand;
-import com.system.car.services.BrandService;
+import com.system.car.services.abstr.BrandService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;

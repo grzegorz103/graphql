@@ -1,12 +1,17 @@
 package com.system.car.api.rest.controllers;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.system.car.dao.BrandRepository;
+import com.system.car.dao.CarRepository;
 import com.system.car.models.Brand;
-import com.system.car.models.Car;
+import com.system.car.models.Motorcycle;
+import com.system.car.models.Motorcycle;
 import com.system.car.services.abstr.CarService;
+import com.system.car.services.abstr.MotorcycleService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -15,11 +20,14 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.MediaType;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.TestPropertySource;
+import org.springframework.test.context.jdbc.Sql;
+import org.springframework.test.context.jdbc.SqlGroup;
 import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.Arrays;
 import java.util.Collections;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
@@ -31,39 +39,39 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @AutoConfigureMockMvc
 @AutoConfigureTestDatabase
 @DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD)
-class CarControllerTest {
+class MotorcycleControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
 
     @MockBean
-    private CarService carService;
+    private MotorcycleService motorcycleService;
 
-    private final String carApiURL = "/api/v1/cars";
+    private final String motorcycleApiURL = "/api/v1/motorcycles";
 
     @Test
     void getById() throws Exception {
-        when(carService.getCarById(anyLong())).thenReturn(mock(Car.class));
-        mockMvc.perform(get(carApiURL + "/1"))
+        when(motorcycleService.getById(anyLong())).thenReturn(mock(Motorcycle.class));
+        mockMvc.perform(get(motorcycleApiURL + "/1"))
                 .andDo(print())
                 .andExpect(status().isOk());
     }
 
     @Test
     void getAll() throws Exception {
-        when(carService.getCarsPaged(any(Pageable.class)))
-                .thenReturn(new PageImpl<>(Arrays.asList(mock(Car.class), mock(Car.class))));
-        mockMvc.perform(get(carApiURL))
+        when(motorcycleService.getAllPaged(any(Pageable.class)))
+                .thenReturn(new PageImpl<>(Arrays.asList(mock(Motorcycle.class), mock(Motorcycle.class))));
+        mockMvc.perform(get(motorcycleApiURL))
                 .andDo(print())
                 .andExpect(status().isOk());
     }
 
     @Test
     void create() throws Exception {
-        Car car = new Car(1L, new Brand(1L, null, "test"), "test", 1, Collections.emptyList(), "test");
-        when(carService.create(anyString(), anyInt(), anyList(), anyString(), anyLong()))
-                .thenReturn(mock(Car.class));
-        mockMvc.perform(post(carApiURL)
+        Motorcycle car = new Motorcycle(1L, new Brand(1L, null, "test"), "test", 1, Collections.emptyList(), "test");
+        when(motorcycleService.create(anyString(), anyInt(), anyList(), anyString(), anyLong()))
+                .thenReturn(mock(Motorcycle.class));
+        mockMvc.perform(post(motorcycleApiURL)
                 .content(new ObjectMapper().writeValueAsString(car))
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept("application/hal+json"))
@@ -73,10 +81,10 @@ class CarControllerTest {
 
     @Test
     void update() throws Exception {
-        Car car = new Car(1L, new Brand(1L, null, "test"), "test", 1, Collections.emptyList(), "test");
-        when(carService.update(anyLong(), anyString(), anyInt(), anyLong()))
-                .thenReturn(mock(Car.class));
-        mockMvc.perform(put(carApiURL + "/1")
+        Motorcycle car = new Motorcycle(1L, new Brand(1L, null, "test"), "test", 1, Collections.emptyList(), "test");
+        when(motorcycleService.update(anyLong(), anyString(), anyInt(), anyLong()))
+                .thenReturn(mock(Motorcycle.class));
+        mockMvc.perform(put(motorcycleApiURL + "/1")
                 .content(new ObjectMapper().writeValueAsString(car))
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept("application/hal+json"))
@@ -86,8 +94,8 @@ class CarControllerTest {
 
     @Test
     void deleteById() throws Exception {
-        when(carService.delete(anyLong())).thenReturn(1L);
-        mockMvc.perform(delete(carApiURL + "/1"))
+        when(motorcycleService.delete(anyLong())).thenReturn(1L);
+        mockMvc.perform(delete(motorcycleApiURL + "/1"))
                 .andExpect(status().isOk());
     }
 }

@@ -2,7 +2,7 @@ package com.system.car.api.graphql.mutations;
 
 import com.coxautodev.graphql.tools.GraphQLMutationResolver;
 import com.system.car.models.Brand;
-import com.system.car.services.BrandService;
+import com.system.car.services.abstr.BrandService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
