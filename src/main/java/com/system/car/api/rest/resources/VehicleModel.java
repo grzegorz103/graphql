@@ -1,6 +1,5 @@
 package com.system.car.api.rest.resources;
 
-import com.system.car.models.Brand;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -14,8 +13,6 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class VehicleModel extends RepresentationModel<VehicleModel> {
-
-    private BrandModel brand;
 
     private String model;
 

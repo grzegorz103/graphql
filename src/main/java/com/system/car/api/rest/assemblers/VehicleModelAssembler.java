@@ -2,13 +2,10 @@ package com.system.car.api.rest.assemblers;
 
 import com.system.car.api.rest.controllers.VehicleController;
 import com.system.car.api.rest.mappers.VehicleModelMapper;
-import com.system.car.api.rest.resources.CarModel;
 import com.system.car.api.rest.resources.VehicleModel;
 import com.system.car.api.rest.utils.LinkUtils;
-import com.system.car.models.Car;
 import com.system.car.models.Vehicle;
 import org.jetbrains.annotations.NotNull;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.server.mvc.RepresentationModelAssemblerSupport;
