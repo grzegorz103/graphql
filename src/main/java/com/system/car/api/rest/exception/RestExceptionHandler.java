@@ -36,12 +36,11 @@ public class RestExceptionHandler {
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public ApiResponse<?> handleMethodArgumentNotValid(TransactionSystemException exception) {
         Throwable cause = exception.getRootCause();
-
         if (cause instanceof ConstraintViolationException) {
             Set<String> errorSet = ((ConstraintViolationException) cause)
                     .getConstraintViolations()
                     .stream()
-                    .map(ConstraintViolation::getMessage)
+                    .map(constraintViolation -> String.format("%s %s", constraintViolation.getPropertyPath(), constraintViolation.getMessage()))
                     .collect(Collectors.toSet());
             return new ApiResponse<>(errorSet);
         }
@@ -53,10 +52,11 @@ public class RestExceptionHandler {
     @ResponseBody
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public ApiResponse<Collection<? extends String>> handleRestMethodArgumentNotValid(MethodArgumentNotValidException exception) {
+
         List<String> errorSet = exception.getBindingResult()
                 .getFieldErrors()
                 .stream()
-                .map(e->e.getField() + " " + e.getDefaultMessage())
+                .map(fieldError -> String.format("%s %s", fieldError.getField(), fieldError.getDefaultMessage()))
                 .collect(Collectors.toList());
         return new ApiResponse<>(errorSet);
     }
