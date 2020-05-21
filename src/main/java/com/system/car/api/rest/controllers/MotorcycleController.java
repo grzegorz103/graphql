@@ -10,6 +10,8 @@ import org.springframework.hateoas.CollectionModel;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 import static com.system.car.api.rest.utils.Constants.API_VERSION;
 
 @RestController
@@ -42,7 +44,7 @@ public class MotorcycleController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public MotorcycleModel create(@RequestBody Motorcycle motorcycle) {
+    public MotorcycleModel create(@RequestBody @Valid Motorcycle motorcycle) {
         return motorcycleModelAssembler.toModel(
                 motorcycleService.create(motorcycle.getModel(), motorcycle.getYear(), motorcycle.getImages(), motorcycle.getInfo(), motorcycle.getBrand().getId())
         );
@@ -50,7 +52,7 @@ public class MotorcycleController {
 
     @PutMapping("/{id}")
     public MotorcycleModel update(@PathVariable("id") Long id,
-                                  @RequestBody Motorcycle motorcycle) {
+                                  @RequestBody @Valid Motorcycle motorcycle) {
         return motorcycleModelAssembler.toModel(
                 motorcycleService.update(id, motorcycle.getModel(), motorcycle.getYear(), motorcycle.getBrand().getId())
         );

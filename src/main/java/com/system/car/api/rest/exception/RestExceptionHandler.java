@@ -52,7 +52,6 @@ public class RestExceptionHandler {
     @ResponseBody
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public ApiResponse<Collection<? extends String>> handleRestMethodArgumentNotValid(MethodArgumentNotValidException exception) {
-
         List<String> errorSet = exception.getBindingResult()
                 .getFieldErrors()
                 .stream()
