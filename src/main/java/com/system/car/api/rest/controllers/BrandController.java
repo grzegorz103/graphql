@@ -12,6 +12,7 @@ import com.system.car.services.abstr.VehicleService;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PagedResourcesAssembler;
 import org.springframework.hateoas.CollectionModel;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -59,6 +60,7 @@ public class BrandController {
     }
 
     @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
     public BrandModel create(@RequestBody @Valid BrandIn brandIn) {
         return brandModelAssembler.toModel(brandService.create(brandIn.getName()));
     }
