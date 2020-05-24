@@ -61,7 +61,7 @@ class CarControllerTest {
 
     @Test
     void create() throws Exception {
-        CarIn car = new CarIn(1L,"test",2000,Collections.emptyList(),"test");
+        CarIn car = new CarIn(1L, "test", 2000, Collections.emptyList(), "test");
         when(carService.create(anyString(), anyInt(), anyList(), anyString(), anyLong()))
                 .thenReturn(mock(Car.class));
         mockMvc.perform(post(carApiURL)
@@ -74,7 +74,7 @@ class CarControllerTest {
 
     @Test
     void update() throws Exception {
-        Car car = new Car(1L, new Brand(1L, null, "test"), "test", 1, Collections.emptyList(), "test");
+        CarIn car = new CarIn(1L, "test", 2000, Collections.emptyList(), "test");
         when(carService.update(anyLong(), anyString(), anyInt(), anyLong()))
                 .thenReturn(mock(Car.class));
         mockMvc.perform(put(carApiURL + "/1")

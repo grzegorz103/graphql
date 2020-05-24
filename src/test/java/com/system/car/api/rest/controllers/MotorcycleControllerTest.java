@@ -1,6 +1,7 @@
 package com.system.car.api.rest.controllers;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.system.car.api.rest.dto.in.MotorcycleIn;
 import com.system.car.dao.BrandRepository;
 import com.system.car.dao.CarRepository;
 import com.system.car.models.Brand;
@@ -68,11 +69,11 @@ class MotorcycleControllerTest {
 
     @Test
     void create() throws Exception {
-        Motorcycle car = new Motorcycle(1L, new Brand(1L, null, "test"), "test", 1, Collections.emptyList(), "test");
+        MotorcycleIn motorcycleIn = new MotorcycleIn(1L,"test",2000,Collections.emptyList(),"test");
         when(motorcycleService.create(anyString(), anyInt(), anyList(), anyString(), anyLong()))
                 .thenReturn(mock(Motorcycle.class));
         mockMvc.perform(post(motorcycleApiURL)
-                .content(new ObjectMapper().writeValueAsString(car))
+                .content(new ObjectMapper().writeValueAsString(motorcycleIn))
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept("application/hal+json"))
                 .andDo(print())
@@ -81,11 +82,11 @@ class MotorcycleControllerTest {
 
     @Test
     void update() throws Exception {
-        Motorcycle car = new Motorcycle(1L, new Brand(1L, null, "test"), "test", 1, Collections.emptyList(), "test");
+        MotorcycleIn motorcycleIn = new MotorcycleIn(1L,"test",2000,Collections.emptyList(),"test");
         when(motorcycleService.update(anyLong(), anyString(), anyInt(), anyLong()))
                 .thenReturn(mock(Motorcycle.class));
         mockMvc.perform(put(motorcycleApiURL + "/1")
-                .content(new ObjectMapper().writeValueAsString(car))
+                .content(new ObjectMapper().writeValueAsString(motorcycleIn))
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept("application/hal+json"))
                 .andDo(print())
