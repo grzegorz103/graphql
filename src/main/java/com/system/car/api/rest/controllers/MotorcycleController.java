@@ -1,6 +1,7 @@
 package com.system.car.api.rest.controllers;
 
 import com.system.car.api.rest.assemblers.MotorcycleModelAssembler;
+import com.system.car.api.rest.dto.in.MotorcycleIn;
 import com.system.car.api.rest.resources.MotorcycleModel;
 import com.system.car.models.Motorcycle;
 import com.system.car.services.abstr.MotorcycleService;
@@ -44,17 +45,17 @@ public class MotorcycleController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public MotorcycleModel create(@RequestBody @Valid Motorcycle motorcycle) {
+    public MotorcycleModel create(@RequestBody @Valid MotorcycleIn motorcycle) {
         return motorcycleModelAssembler.toModel(
-                motorcycleService.create(motorcycle.getModel(), motorcycle.getYear(), motorcycle.getImages(), motorcycle.getInfo(), motorcycle.getBrand().getId())
+                motorcycleService.create(motorcycle.getModel(), motorcycle.getYear(), motorcycle.getImages(), motorcycle.getInfo(), motorcycle.getBrandId())
         );
     }
 
     @PutMapping("/{id}")
     public MotorcycleModel update(@PathVariable("id") Long id,
-                                  @RequestBody @Valid Motorcycle motorcycle) {
+                                  @RequestBody @Valid MotorcycleIn motorcycle) {
         return motorcycleModelAssembler.toModel(
-                motorcycleService.update(id, motorcycle.getModel(), motorcycle.getYear(), motorcycle.getBrand().getId())
+                motorcycleService.update(id, motorcycle.getModel(), motorcycle.getYear(), motorcycle.getBrandId())
         );
     }
 
