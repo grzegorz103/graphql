@@ -1,5 +1,5 @@
 # GraphQL API 
-[![CircleCI](https://circleci.com/gh/grzegorz103/graphql.svg?style=svg)](https://circleci.com/gh/grzegorz103/graphql)
+[![CircleCI](https://circleci.com/gh/grzegorz103/graphql.svg?style=svg)](https://circleci.com/gh/grzegorz103/graphql) ![GitHub language count](https://img.shields.io/github/languages/count/grzegorz103/graphql)
 
 ## Table of contents
 * [General info](#general-info)
@@ -25,6 +25,12 @@ Angular 8 live demo at https://vehicle-site3021.firebaseapp.com/
 - JUnit & Mockito
 - Mapstruct
 - Angular 8, Apollo
+
+## Features
+
+- Browse vehicles and view details
+- Manage brands and vehicles
+- View vehicle details
 
 ## Setup
 ### Prerequisites
