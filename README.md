@@ -26,6 +26,12 @@ Angular 8 live demo at https://vehicle-site3021.firebaseapp.com/
 - Mapstruct
 - Angular 8, Apollo
 
+## Features
+
+- Browse vehicles and view details
+- Manage brands and vehicles
+- View vehicle details
+
 ## Setup
 ### Prerequisites
 
